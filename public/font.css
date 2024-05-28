@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Shabnam";
+  src: url("../fonts/Shabnam-Thin.woff2") format("woff2");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Shabnam";
+  src: url("../fonts/Shabnam-Light.woff2") format("woff2");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Shabnam";
+  src: url("../fonts/Shabnam.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Shabnam";
+  src: url("../fonts/Shabnam-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Shabnam";
+  src: url("../fonts/Shabnam-Thin.woff2") format("woff2");
+  font-weight: 700;
+}
