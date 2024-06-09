@@ -1,11 +1,14 @@
 import { Toaster } from "react-hot-toast";
-import Signup from "./feachers/authentication/signup";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
       <Toaster />
-      <Signup />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }

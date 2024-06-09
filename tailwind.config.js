@@ -6,6 +6,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "home-introduction": "url('/photos/Home.png')",
+      },
       container: {
         center: true,
       },
