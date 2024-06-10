@@ -32,34 +32,34 @@ const SaghfinooDetails = [
 const SaghfinooSummery: React.FC = () => {
   return (
     <div className="mx-6 md:mx-14 my-10 space-y-8 text-gray-800">
-      <h2 className="font-bold text-2xl">سقفینو چطور به خانه‌دار شدن شما کمک می‌کند</h2>
+      <h2 className="font-bold text-2xl">
+        سقفینو چطور به خانه‌دار شدن شما کمک می‌کند
+      </h2>
       <SaghfinooSwiper>
         {SaghfinooDetails.map((item) => (
-          <div className="max-w-52 " key={item.id}>
-            <SwiperSlide>
-              <div className="flex flex-col bg-gray-100 gap-8">
-                <div className="flex flex-col gap-6">
-                  <div>
-                    <img className="" src={item.image} alt="" />
-                  </div>
-                  <div className="p-5">
-                    <h4 className="text-center font-black text-lg">
-                      {item.header}
-                    </h4>
-                    <p className="text-center text-sm">{item.text}</p>
-                  </div>
+          <SwiperSlide key={item.id}>
+            <div className="flex flex-col bg-gray-100 gap-8 rounded-lg border border-gray-200">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <img className="rounded-lg" src={item.image} alt="" />
                 </div>
-                <div className="flex justify-center p-6">
-                  <Link
-                    className="w-full text-center bg-primary p-2 text-white font-bold rounded-lg"
-                    to={item.path}
-                  >
-                    {item.buttonText}
-                  </Link>
+                <div className="p-5">
+                  <h4 className="text-center font-black text-lg">
+                    {item.header}
+                  </h4>
+                  <p className="text-center text-sm">{item.text}</p>
                 </div>
               </div>
-            </SwiperSlide>
-          </div>
+              <div className="flex justify-center p-6">
+                <Link
+                  className="w-full text-center bg-primary p-2 text-white font-bold rounded-lg"
+                  to={item.path}
+                >
+                  {item.buttonText}
+                </Link>
+              </div>
+            </div>
+          </SwiperSlide>
         ))}
       </SaghfinooSwiper>
     </div>

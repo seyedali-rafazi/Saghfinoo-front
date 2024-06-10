@@ -3,11 +3,24 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
+
 interface SwiperType {
   children: React.ReactNode;
+  sm?: number;
+  md?: number;
+  lg?: number;
+  xl?: number;
+  spaceBetween?: number;
 }
 
-const SaghfinooSwiper: React.FC<SwiperType> = ({ children }) => {
+const SaghfinooSwiper: React.FC<SwiperType> = ({
+  children,
+  sm = 1,
+  md = 2,
+  lg = 2,
+  xl = 3,
+  spaceBetween = 20,
+}) => {
   return (
     <div className="flex">
       <Swiper
@@ -16,20 +29,20 @@ const SaghfinooSwiper: React.FC<SwiperType> = ({ children }) => {
         modules={[Keyboard, Pagination, Navigation]}
         breakpoints={{
           450: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: sm,
+            spaceBetween: spaceBetween,
           },
           600: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: md,
+            spaceBetween: spaceBetween,
           },
           768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: lg,
+            spaceBetween: spaceBetween,
           },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 20,
+            slidesPerView: xl,
+            spaceBetween: spaceBetween,
           },
         }}
       >
