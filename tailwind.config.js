@@ -19,6 +19,7 @@ export default {
         black: "#0c0c0c",
 
         tint: {
+          50: "#ffffffe3",
           100: "#fdf1f1",
           200: "#fce8e8",
           300: "#f9d2d2",
