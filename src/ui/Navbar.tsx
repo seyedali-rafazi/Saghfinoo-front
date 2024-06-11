@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo, miniLogo } from "../icons/homeIcon";
 import { RxHamburgerMenu } from "react-icons/rx";
+import EnterUser from "../components/Navbar/EnterUser";
 
 const Navbar: React.FC = () => {
   return (
@@ -18,10 +19,8 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <div className="md:hidden">{miniLogo}</div>
-        <div className="flex gap-4 font-medium">
-          <button className="hidden md:block hover:text-primary duration-300">
-            ورود
-          </button>
+        <div className="flex gap-4 font-medium items-center">
+          <EnterUser />
           <Link
             className="px-4 py-2 border border-primary rounded-xl text-primary hover:bg-primary hover:text-white duration-300"
             to=""

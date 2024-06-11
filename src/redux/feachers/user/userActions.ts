@@ -10,6 +10,16 @@ import {
 import http from "../../../services/https";
 import toast from "react-hot-toast";
 
+interface UserData {
+  phoneNumber: string;
+  password: string;
+}
+
+interface SignupPayload {
+  userData: UserData;
+  onSuccess: () => void;
+}
+
 export const fetchUser = createAsyncThunk(
   "user/fetchUser",
   async (_, { dispatch }) => {
@@ -25,13 +35,14 @@ export const fetchUser = createAsyncThunk(
 
 export const signup = createAsyncThunk(
   "user/signup",
-  async (userData: { phoneNumber: string; password: string }, { dispatch }) => {
+  async ({ userData, onSuccess }: SignupPayload, { dispatch }) => {
     dispatch(signupRequest());
     try {
       const response = await http.post(`/user/get-otp`, userData);
       dispatch(signupSuccess(response.data));
       console.log(userData);
       toast.success(response.data.data.message);
+      onSuccess();
     } catch (error: any) {
       dispatch(signupFailure(error.message));
       toast.success(error.message);

@@ -3,10 +3,10 @@ interface TextFieldProps {
   placeholder?: string;
   errors?: any;
   name: string;
-  type: string;
-  value: string;
-  onChange: (e: React.ChangeEventHandler<HTMLInputElement>) => void;
-  register: any;
+  type?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEventHandler<HTMLInputElement>) => void;
+  register?: any;
   validationSchema?: {
     required?: string;
     pattern?: {
