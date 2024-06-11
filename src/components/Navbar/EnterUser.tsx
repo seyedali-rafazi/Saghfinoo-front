@@ -18,7 +18,6 @@ const EnterUser: React.FC = () => {
 
   const handelClick = () => {
     setOpenAuth(true);
-    console.log(openAuth);
   };
 
   const onCkickSubmit = (data: any) => {

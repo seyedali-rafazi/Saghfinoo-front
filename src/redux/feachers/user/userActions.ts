@@ -40,7 +40,6 @@ export const signup = createAsyncThunk(
     try {
       const response = await http.post(`/user/get-otp`, userData);
       dispatch(signupSuccess(response.data));
-      console.log(userData);
       toast.success(response.data.data.message);
       onSuccess();
     } catch (error: any) {
