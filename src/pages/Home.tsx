@@ -1,5 +1,6 @@
 import HomeCounseling from "../components/Home/HomeCounseling";
 import HomeIntro from "../components/Home/HomeIntro";
+import HomeNews from "../components/Home/HomeNews";
 import SaghfinooHouseType from "../components/Home/SaghfinooHouseType";
 import SaghfinooSummery from "../components/Home/SaghfinooSummery";
 import Navbar from "../ui/Navbar";
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
         <SaghfinooSummery />
         <SaghfinooHouseType />
         <HomeCounseling />
+        <HomeNews />
       </div>
     </div>
   );

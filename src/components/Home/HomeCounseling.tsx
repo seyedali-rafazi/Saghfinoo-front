@@ -31,7 +31,7 @@ const HomeCounseling: React.FC = () => {
       <SaghfinooSwiper xl={3} lg={3}>
         {Counseling.map((item) => (
           <SwiperSlide key={item.id} className="flex justify-center">
-            <div className="flex flex-col justify-center items-center rounded-lg border border-gray-200 max-w-56 min-h-52 p-5">
+            <div className="flex flex-col justify-center items-center rounded-lg border border-gray-200 max-w-56 min-h-52 p-5 shadow-lg">
               <div>
                 <img className="w-full" src={item.image} alt="" />
               </div>

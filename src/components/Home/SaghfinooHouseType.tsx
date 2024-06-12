@@ -1,6 +1,6 @@
 import { SwiperSlide } from "swiper/react";
 import SaghfinooSwiper from "../../ui/SaghfinooSwiper";
-import { Link } from "react-router-dom";
+import SwiperSlideSimple from "../../ui/SwiperSlideSimple";
 
 const SaghfinooHpouseDetails = [
   {
@@ -36,15 +36,12 @@ const SaghfinooHouseType: React.FC = () => {
       <SaghfinooSwiper xl={4} lg={4}>
         {SaghfinooHpouseDetails.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="flex flex-col bg-gray-100 rounded-lg border border-gray-200">
-              <div>
-                <img className="rounded-t-lg" src={item.image} alt="" />
-              </div>
-              <div className="flex flex-col justify-center items-center w-full py-5">
-                <p className="font-bold">{item.houseNumber}</p>
-                <p>{item.homeType}</p>
-              </div>
-            </div>
+            <SwiperSlideSimple
+              id={item.id}
+              image={item.image}
+              header={item.houseNumber}
+              text={item.homeType}
+            />
           </SwiperSlide>
         ))}
       </SaghfinooSwiper>
