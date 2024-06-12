@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { Logo, miniLogo } from "../icons/homeIcon";
-import { RxHamburgerMenu } from "react-icons/rx";
 import EnterUser from "../components/Navbar/EnterUser";
+import HamburgerMenu from "../components/Navbar/HamburgerMenu";
 
 const Navbar: React.FC = () => {
   return (
     <div className="flex justify-center">
       <div className="fixed bg-white py-3 px-6 md:rounded-xl w-full md:w-11/12 mx-32 md:my-14 z-50 flex justify-between items-center">
         <div className="flex justify-between md:justify-center items-center">
-          <RxHamburgerMenu className="md:hidden w-6 h-6" />
+          <HamburgerMenu />
           <div className="hidden md:block">{Logo}</div>
           <div className="hidden md:flex gap-3 font-medium">
             <Link to={""}>اجاره</Link>
@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <div className="md:hidden">{miniLogo}</div>
-        <div className="flex gap-4 font-medium items-center">
+        <div className="flex md:gap-4 font-medium items-center">
           <EnterUser />
           <Link
-            className="px-4 py-2 border border-primary rounded-xl text-primary hover:bg-primary hover:text-white duration-300"
+            className="px-4 py-2 border border-primary rounded-xl text-primary hover:bg-primary hover:text-white duration-300 text-sm md:text-md"
             to=""
           >
             ثبت آگهی

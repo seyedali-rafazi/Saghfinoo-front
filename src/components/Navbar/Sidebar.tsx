@@ -1,0 +1,109 @@
+import { useEffect, useRef } from "react";
+import {
+  Cross,
+  UserAuth,
+  Plus,
+  Home,
+  Key,
+  Amlak,
+  People,
+  LeftArrow,
+} from "../../icons/SidebarIcon";
+import { Link } from "react-router-dom";
+
+const SidebarOptions = [
+  {
+    id: 1,
+    text: "ثبت آگهی",
+    icon: <Key />,
+  },
+  {
+    id: 2,
+    text: "اجاره خانه",
+    icon: <Plus />,
+  },
+  {
+    id: 3,
+    text: "خرید خانه",
+    icon: <Home />,
+  },
+  {
+    id: 4,
+    text: "املاک و مستغلات",
+    icon: <Amlak />,
+  },
+  {
+    id: 5,
+    text: "مشاورین املاک",
+    icon: <People />,
+  },
+];
+
+interface SidebarType {
+  open: boolean;
+  onClose: () => void;
+}
+
+const Sidebar: React.FC<SidebarType> = ({ open, onClose }) => {
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("overflow-hidden");
+      sidebarRef.current?.classList.remove("translate-x-full");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+      sidebarRef.current?.classList.add("translate-x-full");
+    }
+  }, [open]);
+
+  return (
+    <div
+      className={`${
+        open ? "fixed top-0 left-0 right-0 bottom-0 w-full h-screen " : ""
+      } modal`}
+    >
+      <div
+        className={`fixed  top-0 right-0 w-full  h-screen bg-white bg-opacity-30 modal lg:hidden transition-transform duration-700  ${
+          open ? "translate-x-full" : ""
+        }`}
+        ref={sidebarRef}
+      >
+        <div className="top-0 right-0 bg-white w-full h-screen">
+          <div>
+            <div className="flex justify-end w-full relative p-6">
+              <button onClick={onClose}>
+                <Cross />
+              </button>
+            </div>
+            <div className="flex gap-3 items-center py-8 px-3 bg-gray-100">
+              <div>
+                <UserAuth />
+              </div>
+              <p className="text-sm font-medium">ورود یا ثبت نام</p>
+            </div>
+            <div>
+              {SidebarOptions.map((SidebarOption) => (
+                <Link
+                  className="flex justify-between items-center py-3 px-3 text-sm font-medium"
+                  key={SidebarOption.id}
+                  to={""}
+                >
+                  <div className="flex items-center gap-2">
+                    {SidebarOption.icon}
+                    <p>{SidebarOption.text}</p>
+                  </div>
+                  <div>
+                    <LeftArrow />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;
