@@ -15,7 +15,6 @@ const Navbar: React.FC = () => {
             <Link to={""}>خرید</Link>
             <Link to={""}>املاک و مستغلات</Link>
             <Link to={""}>مشاورین املاک</Link>
-            <Link to={""}>اخبار روز</Link>
           </div>
         </div>
         <div className="md:hidden">{miniLogo}</div>
