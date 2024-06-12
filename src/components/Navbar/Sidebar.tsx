@@ -10,6 +10,7 @@ import {
   LeftArrow,
 } from "../../icons/SidebarIcon";
 import { Link } from "react-router-dom";
+import EnterUser from "./EnterUser";
 
 const SidebarOptions = [
   {
@@ -61,11 +62,11 @@ const Sidebar: React.FC<SidebarType> = ({ open, onClose }) => {
     <div
       className={`${
         open ? "fixed top-0 left-0 right-0 bottom-0 w-full h-screen " : ""
-      } modal`}
+      }`}
     >
       <div
         className={`fixed  top-0 right-0 w-full  h-screen bg-white bg-opacity-30 modal lg:hidden transition-transform duration-700  ${
-          open ? "translate-x-full" : ""
+          open ? "" : "translate-x-full"
         }`}
         ref={sidebarRef}
       >
@@ -77,10 +78,12 @@ const Sidebar: React.FC<SidebarType> = ({ open, onClose }) => {
               </button>
             </div>
             <div className="flex gap-3 items-center py-8 px-3 bg-gray-100">
-              <div>
-                <UserAuth />
-              </div>
-              <p className="text-sm font-medium">ورود یا ثبت نام</p>
+              <EnterUser>
+                <div className="flex gap-2 items-center justify-center text-sm font-medium">
+                  <UserAuth />
+                  <p>ورود / ثبت نام</p>
+                </div>
+              </EnterUser>
             </div>
             <div>
               {SidebarOptions.map((SidebarOption) => (

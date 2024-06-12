@@ -19,7 +19,9 @@ const Navbar: React.FC = () => {
         </div>
         <div className="md:hidden">{miniLogo}</div>
         <div className="flex md:gap-4 font-medium items-center">
-          <EnterUser />
+          <EnterUser classHid="hidden">
+            <p>ورود</p>
+          </EnterUser>
           <Link
             className="px-4 py-2 border border-primary rounded-xl text-primary hover:bg-primary hover:text-white duration-300 text-sm md:text-md"
             to=""
