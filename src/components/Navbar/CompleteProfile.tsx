@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import Modal from "../../ui/Modal";
 import TextField from "../../ui/TextField";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store/store";
+import { completeProfile } from "../../redux/feachers/user/userActions";
 
 interface AutoModalType {
   setOpenCompleteProfile: (open: boolean) => void;
@@ -17,9 +20,16 @@ const CompleteProfile: React.FC<AutoModalType> = ({
     reset,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch<AppDispatch>();
+
   const onCkickSubmit = (data: any) => {
-    // dispatch(signup({ userData: data, onSuccess: () => setOpenAuth(false) }));
-    // reset();
+    dispatch(
+      completeProfile({
+        userProfileData: data,
+        onSuccess: () => setOpenCompleteProfile(false),
+      })
+    );
+    reset();
   };
 
   console.log(openCompleteProfile);
@@ -48,6 +58,19 @@ const CompleteProfile: React.FC<AutoModalType> = ({
             validationSchema={{
               required: "نام و نام خانوادگی ضروری است",
             }}
+          />
+          <TextField
+            className="textField"
+            placeholder="ایمیل:"
+            name="email"
+            register={register}
+            validationSchema={{
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "ایمیل نامعتبر است",
+              },
+            }}
+            errors={errors}
           />
           <button
             type="submit"

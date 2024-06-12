@@ -20,6 +20,16 @@ interface SignupPayload {
   onSuccess: () => void;
 }
 
+interface UserProfileData {
+  name: string;
+  email: string;
+}
+
+interface CompletePayload {
+  userProfileData: UserProfileData;
+  onSuccess: () => void;
+}
+
 export const fetchUser = createAsyncThunk(
   "user/fetchUser",
   async (_, { dispatch }) => {
@@ -39,6 +49,25 @@ export const signup = createAsyncThunk(
     dispatch(signupRequest());
     try {
       const response = await http.post(`/user/get-otp`, userData);
+      dispatch(signupSuccess(response.data));
+      toast.success(response.data.data.message);
+      onSuccess();
+    } catch (error: any) {
+      dispatch(signupFailure(error.message));
+      toast.success(error.message);
+    }
+  }
+);
+
+export const completeProfile = createAsyncThunk(
+  "user/complete-profile",
+  async ({ userProfileData, onSuccess }: CompletePayload, { dispatch }) => {
+    dispatch(signupRequest());
+    try {
+      const response = await http.post(
+        `/user/complete-profile`,
+        userProfileData
+      );
       dispatch(signupSuccess(response.data));
       toast.success(response.data.data.message);
       onSuccess();

@@ -29,6 +29,7 @@ const userSlice = createSlice({
       state.user = null;
       state.error = action.payload;
     },
+
     signupRequest(state) {
       state.loading = true;
     },
@@ -38,6 +39,20 @@ const userSlice = createSlice({
       state.error = null;
     },
     signupFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.user = null;
+      state.error = action.payload;
+    },
+
+    completeProfileRequest(state) {
+      state.loading = true;
+    },
+    completeProfileSuccess(state, action: PayloadAction<any>) {
+      state.loading = false;
+      state.user = action.payload;
+      state.error = null;
+    },
+    completeProfileFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.user = null;
       state.error = action.payload;
@@ -52,6 +67,9 @@ export const {
   signupRequest,
   signupSuccess,
   signupFailure,
+  completeProfileRequest,
+  completeProfileSuccess,
+  completeProfileFailure,
 } = userSlice.actions;
 
 export default userSlice.reducer;
