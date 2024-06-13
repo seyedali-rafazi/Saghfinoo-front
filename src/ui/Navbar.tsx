@@ -6,12 +6,12 @@ import HamburgerMenu from "../components/Navbar/HamburgerMenu";
 const Navbar: React.FC = () => {
   return (
     <div className="flex justify-center">
-      <div className="fixed bg-white py-3 px-6 md:rounded-xl w-full md:w-11/12 mx-32 md:my-14 z-50 flex justify-between items-center">
+      <div className="fixed bg-white shadow-lg border py-3 px-6 md:rounded-xl w-full md:w-11/12 mx-32 md:my-14 z-50 flex justify-between items-center">
         <div className="flex justify-between md:justify-center items-center">
           <HamburgerMenu />
           <div className="hidden md:block">{Logo}</div>
           <div className="hidden md:flex gap-3 font-medium">
-            <Link to={""}>اجاره</Link>
+            <Link to={"/houses"}>اجاره</Link>
             <Link to={""}>خرید</Link>
             <Link to={""}>املاک و مستغلات</Link>
             <Link to={""}>مشاورین املاک</Link>
