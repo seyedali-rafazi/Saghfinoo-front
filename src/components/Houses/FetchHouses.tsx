@@ -17,7 +17,7 @@ const FetchHouses: React.FC = () => {
   console.log(houseState?.house?.data?.products[1]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full md:w-1/2">
       {houseState?.house?.data?.products.map((house: any) => (
         <div className="space-y-5 border rounded-lg h-fit" key={house._id}>
           <Link to={house._id}>

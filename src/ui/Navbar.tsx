@@ -5,8 +5,8 @@ import HamburgerMenu from "../components/Navbar/HamburgerMenu";
 
 const Navbar: React.FC = () => {
   return (
-    <div className="flex justify-center">
-      <div className="fixed bg-white shadow-lg border py-3 px-6 md:rounded-xl w-full md:w-11/12 mx-32 md:my-14 z-50 flex justify-between items-center">
+    <div className="flex justify-center navbar-z">
+      <div className="absolute bg-white shadow-lg border py-3 px-6 md:rounded-xl w-full md:w-11/12 mx-32 md:my-14 z-50 flex justify-between items-center">
         <div className="flex justify-between md:justify-center items-center">
           <HamburgerMenu />
           <div className="hidden md:block">{Logo}</div>

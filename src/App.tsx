@@ -2,8 +2,8 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import { UserContextProvider } from "./context/UserContext";
-import Signup from "./feachers/authentication/signup";
 import Houses from "./pages/Houses";
+import Map from "./components/Houses/Map";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/houses" element={<Houses />} />
-        <Route path="/sign" element={<Signup />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
     </UserContextProvider>
   );
