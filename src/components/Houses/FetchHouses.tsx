@@ -1,24 +1,60 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store/store";
-import { useEffect } from "react";
-import { fetchHouses } from "../../redux/feachers/products/houseActions";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Favourite } from "../../icons/housesIcon";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
 
+interface Item {
+  _id: number;
+}
+
 const FetchHouses: React.FC = () => {
-  const houseState = useSelector((state: RootState) => state.house);
-  const dispatch = useDispatch<AppDispatch>();
+  const [items, setItems] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(0);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/product/list?page=${page}`
+      );
+      const data = await response.json();
+      setLimit(data.data.total);
+      setItems((prevItems) => [...prevItems, ...data.data.products]);
+      setPage((prevPage) => prevPage + 1);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    dispatch(fetchHouses());
-  }, [dispatch]);
+    fetchData();
+  }, []);
 
-  console.log(houseState?.house?.data?.products[1]);
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight ||
+      isLoading
+    ) {
+      return;
+    }
+    if (items.length < limit) {
+      fetchData();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isLoading]);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full md:w-1/2">
-      {houseState?.house?.data?.products.map((house: any) => (
+      {items.map((house: any) => (
         <div className="space-y-5 border rounded-lg h-fit" key={house._id}>
           <Link to={house._id}>
             <div className="relative w-full h-32 bg-cover rounded-lg">
