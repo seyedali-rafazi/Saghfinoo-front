@@ -7,12 +7,15 @@ import {
 import http from "../../../services/https";
 
 export const fetchHouses = createAsyncThunk(
-  "/product/list",
-  async (_, { dispatch }) => {
+  "house/fetchHouses",
+  async (_, { dispatch, getState }) => {
+    const state: any = getState();
+    const { page } = state.house;
+
     dispatch(fetchHouseRequest());
     try {
-      const response = await http.get(`/product/list`);
-      dispatch(fetchHouseSuccess(response.data));
+      const response = await http.get(`/product/list?page=${page}`);
+      dispatch(fetchHouseSuccess(response.data.data));
     } catch (error: any) {
       dispatch(fetchHouseFailure(error.message));
     }

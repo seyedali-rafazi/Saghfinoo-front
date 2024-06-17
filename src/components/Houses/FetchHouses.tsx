@@ -1,57 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Favourite } from "../../icons/housesIcon";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
 import Skeleton from "../../ui/Skeleton";
-
-interface Item {
-  _id: number;
-}
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/store/store";
+import { fetchHouses } from "../../redux/feachers/products/houseActions";
 
 const FetchHouses: React.FC = () => {
-  const [items, setItems] = useState<Item[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(0);
-
-  const fetchData = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/product/list?page=${page}`
-      );
-      const data = await response.json();
-      setLimit(data.data.total);
-      setItems((prevItems) => [...prevItems, ...data.data.products]);
-      setPage((prevPage) => prevPage + 1);
-    } catch (error) {
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const dispatch: AppDispatch = useDispatch();
+  const { items, loading, limit } = useSelector(
+    (state: RootState) => state.house
+  );
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    dispatch(fetchHouses());
+  }, [dispatch]);
 
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop !==
         document.documentElement.offsetHeight ||
-      isLoading
+      loading
     ) {
       return;
     }
     if (items.length < limit) {
-      fetchData();
+      dispatch(fetchHouses());
     }
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isLoading]);
+  }, [loading, items.length, limit]);
 
   return (
     <div className="space-y-5 w-full md:w-1/2">
@@ -90,7 +72,7 @@ const FetchHouses: React.FC = () => {
         ))}
       </div>
       <div className="flex gap-6 flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
-        {isLoading && <Skeleton cards={2} />}
+        {loading && <Skeleton cards={2} />}
       </div>
     </div>
   );
