@@ -10,6 +10,7 @@ interface ParamsType {
   houseGroup?: string;
   location?: string;
   year?: string;
+  sort?: string;
 }
 
 export const fetchHouses = createAsyncThunk(
@@ -22,6 +23,7 @@ export const fetchHouses = createAsyncThunk(
     if (params.houseGroup) queryParams.append("houseGroup", params.houseGroup);
     if (params.location) queryParams.append("location", params.location);
     if (params.year) queryParams.append("year", params.year);
+    if (params.sort) queryParams.append("sort", params.sort);
 
     console.log(queryParams.toString());
 
