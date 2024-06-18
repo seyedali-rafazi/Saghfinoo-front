@@ -5,11 +5,13 @@ import { UserContextProvider } from "./context/UserContext";
 import Map from "./components/Houses/SaghfinooMap";
 import RentHouse from "./pages/RentHouse";
 import BuyHouse from "./pages/BuyHouse";
+import ScrollToTop from "./ui/ScrollToTop";
 
 function App() {
   return (
     <UserContextProvider>
       <Toaster />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rent-house" element={<RentHouse />} />
