@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Favourite } from "../../icons/housesIcon";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
@@ -6,16 +6,28 @@ import Skeleton from "../../ui/Skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store/store";
 import { fetchHouses } from "../../redux/feachers/products/houseActions";
+import { resetHouseState } from "../../redux/feachers/products/houseSlice";
 
-const FetchHouses: React.FC = () => {
+interface FetchHousesType {
+  city: string;
+}
+
+const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   const dispatch: AppDispatch = useDispatch();
   const { items, loading, limit } = useSelector(
     (state: RootState) => state.house
   );
 
+  const params = {
+    location: "Tehran",
+    year: "1999",
+    houseGroup: city,
+  };
+
   useEffect(() => {
-    dispatch(fetchHouses());
-  }, [dispatch]);
+    dispatch(resetHouseState()); // Reset state to clear previous data
+    dispatch(fetchHouses(params));
+  }, [dispatch, city]);
 
   const handleScroll = () => {
     if (
@@ -26,7 +38,7 @@ const FetchHouses: React.FC = () => {
       return;
     }
     if (items.length < limit) {
-      dispatch(fetchHouses());
+      dispatch(fetchHouses(params));
     }
   };
 

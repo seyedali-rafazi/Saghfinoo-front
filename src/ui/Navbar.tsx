@@ -11,8 +11,8 @@ const Navbar: React.FC = () => {
           <HamburgerMenu />
           <div className="hidden md:block">{Logo}</div>
           <div className="hidden md:flex gap-3 font-medium">
-            <Link to={"/houses"}>اجاره</Link>
-            <Link to={""}>خرید</Link>
+            <Link to={"/rent-house"}>اجاره</Link>
+            <Link to={"/buy-house"}>خرید</Link>
             <Link to={""}>املاک و مستغلات</Link>
             <Link to={""}>مشاورین املاک</Link>
           </div>
