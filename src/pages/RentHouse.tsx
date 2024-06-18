@@ -8,7 +8,7 @@ const RentHouse: React.FC = () => {
     <div>
       <Navbar />
       <div className="w-full min-h-screen mt-12 md:mt-[170px] px-6 md:px-14 py-10 space-y-5">
-        <HousesHeader />
+        <HousesHeader headerText="اجاره  خانه" />
         <div className="flex gap-12">
           <FetchHouses city="اجاره" />
           <SaghfinooMap />

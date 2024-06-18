@@ -4,12 +4,12 @@ import SaghfinooSwiper from "../../ui/SaghfinooSwiper";
 const Counseling = [
   {
     id: 1,
-    image: "/photos/location.jpg",
+    image: "/photos/location.png",
     homeType: "امکان خرید و اجاره ملک در اکثر نقاط کشور",
   },
   {
     id: 2,
-    image: "/photos/time.jpg",
+    image: "/photos/time.png",
     homeType: "مقایسه و بررسی صدها ملک براحتی و در کمترین زمان",
   },
   {
