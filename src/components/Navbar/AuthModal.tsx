@@ -18,7 +18,6 @@ const AuthModal: React.FC<AutoModalType> = ({
   setOpenAuth,
   openAuth,
   user,
-  loading,
 }) => {
   const [openCompleteProfile, setOpenCompleteProfile] = useState(false);
   const dispatch = useDispatch<AppDispatch>();

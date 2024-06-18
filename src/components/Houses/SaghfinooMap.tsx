@@ -1,9 +1,15 @@
 import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import { LatLngTuple } from "leaflet";
+
+interface MarkerType {
+  id: number;
+  geocode: LatLngTuple;
+}
 
 const SaghfinooMap: React.FC = () => {
-  const markers = [
+  const markers: MarkerType[] = [
     {
       id: 1,
       geocode: [35.6892, 51.389],
@@ -94,7 +100,7 @@ const SaghfinooMap: React.FC = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {markers.map((marker) => (
-          <Marker position={marker.geocode} key={marker.id}></Marker>
+          <Marker position={marker.geocode as [number, number]} key={marker.id}></Marker>
         ))}
       </MapContainer>
     </div>
