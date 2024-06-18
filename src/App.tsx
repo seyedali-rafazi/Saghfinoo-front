@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import { UserContextProvider } from "./context/UserContext";
-import Map from "./components/Houses/Map";
+import Map from "./components/Houses/SaghfinooMap";
 import RentHouse from "./pages/RentHouse";
 import BuyHouse from "./pages/BuyHouse";
 

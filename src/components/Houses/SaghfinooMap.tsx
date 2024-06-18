@@ -2,10 +2,7 @@ import React from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
-
-const Map: React.FC = () => {
-  const defaultCenter = [35.6892, 51.389]; // Set your desired default center coordinates
-
+const SaghfinooMap: React.FC = () => {
   const markers = [
     {
       id: 1,
@@ -91,7 +88,7 @@ const Map: React.FC = () => {
 
   return (
     <div className="w-1/2 hidden md:block">
-      <MapContainer center={defaultCenter} zoom={11}>
+      <MapContainer center={[35.6892, 51.389]} zoom={11}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -104,4 +101,4 @@ const Map: React.FC = () => {
   );
 };
 
-export default Map;
+export default SaghfinooMap;

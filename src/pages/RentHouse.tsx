@@ -1,6 +1,6 @@
 import FetchHouses from "../components/Houses/FetchHouses";
 import HousesHeader from "../components/Houses/HousesHeader";
-import Map from "../components/Houses/Map";
+import SaghfinooMap from "../components/Houses/SaghfinooMap";
 import Navbar from "../ui/Navbar";
 
 const RentHouse: React.FC = () => {
@@ -11,7 +11,7 @@ const RentHouse: React.FC = () => {
         <HousesHeader />
         <div className="flex gap-12">
           <FetchHouses city="اجاره" />
-          <Map />
+          <SaghfinooMap />
         </div>
       </div>
     </div>
