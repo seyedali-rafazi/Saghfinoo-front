@@ -7,6 +7,7 @@ import { resetHouseState } from "../../redux/feachers/products/houseSlice";
 import HousesInformation from "./HousesInformation";
 import HouseCard from "../../ui/HouseCard";
 import HouseSorted from "./HouseSorted";
+import { useQueryContext } from "../../context/QueryStringContext";
 
 interface FetchHousesType {
   city: string;
@@ -18,12 +19,15 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
     (state: RootState) => state.house
   );
   const [sort, setSort] = useState("earliest");
+  const { queryString } = useQueryContext();
 
   const params = {
     location: "Tehran",
     year: "1999",
     houseGroup: city,
     sort: sort,
+    rooms: 2,
+    queryString,
   };
 
   useEffect(() => {
