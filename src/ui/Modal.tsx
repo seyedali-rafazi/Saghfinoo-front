@@ -15,7 +15,7 @@ const Modal: React.FC<ModalType> = ({
   children,
   onClose,
   logo,
-  width = "w-[calc(100vw-2rem)] md:max-w-lg",
+  width = "w-[calc(100vw-2rem)] md:max-w-lg rounded-lg",
 }) => {
   const modalref = useOutsideClick(onClose);
   useEffect(() => {
@@ -31,7 +31,7 @@ const Modal: React.FC<ModalType> = ({
       <div className="fixed backdrop-blur-sm top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black bg-opacity-30 modal z-50">
         <div
           ref={modalref}
-          className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondery-50 rounded-lg p-4  transition-all duration-500 ease-out max-h-[calc(100vh-2rem)] bg-white
+          className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondery-50  p-4  transition-all duration-500 ease-out md:max-h-[calc(100vh-2rem)] bg-white
                         ${width}`}
         >
           <div className="relative flex flex-col items-center">

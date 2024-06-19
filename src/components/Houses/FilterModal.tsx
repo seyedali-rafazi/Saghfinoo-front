@@ -1,5 +1,6 @@
 import Modal from "../../ui/Modal";
-import RoomFilter from "./RoomFilter";
+import FilterParking from "./FilterParking";
+import FilterRoom from "./FilterRoom";
 
 interface FilterModalType {
   setFilterOpen: (open: boolean) => void;
@@ -15,11 +16,12 @@ const FilterModal: React.FC<FilterModalType> = ({
       logo="فیلترها"
       onClose={() => setFilterOpen(false)}
       open={filterOpen}
-      width="w-1/2"
+      width="h-full w-full md:w-2/3 lg:w-1/2 md:h-fit md:rounded-lg"
     >
       <div className="space-y-7 bg-white flex justify-center w-full">
-        <div className="flex flex-col justify-center items-center font-normal text-sm w-full">
-          <RoomFilter />
+        <div className="flex flex-col gap-5 justify-center items-center font-normal text-sm w-full">
+          <FilterRoom />
+          <FilterParking />
         </div>
       </div>
     </Modal>
