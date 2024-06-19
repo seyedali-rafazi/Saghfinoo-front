@@ -8,6 +8,8 @@ import HousesInformation from "./HousesInformation";
 import HouseCard from "../../ui/HouseCard";
 import HouseSorted from "./HouseSorted";
 import { useQueryContext } from "../../context/QueryStringContext";
+import TestingFetch from "./TestingFetch";
+import Filters from "./Filters";
 
 interface FetchHousesType {
   city: string;
@@ -22,18 +24,15 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   const { queryString } = useQueryContext();
 
   const params = {
-    location: "Tehran",
-    year: "1999",
     houseGroup: city,
     sort: sort,
-    rooms: 2,
     queryString,
   };
 
   useEffect(() => {
     dispatch(resetHouseState()); // Reset state to clear previous data
     dispatch(fetchHouses(params));
-  }, [dispatch, city, sort]);
+  }, [dispatch, city, sort, queryString]);
 
   const handleScroll = () => {
     if (
@@ -56,8 +55,10 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   return (
     <div className="space-y-5 w-full md:w-1/2">
       <HousesInformation limit={limit}>
-        <HouseSorted limit={limit} setSort={setSort} />
+        <Filters />
+        <HouseSorted setSort={setSort} />
       </HousesInformation>
+      <TestingFetch />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full">
         {items.map((house: any) => (
           <HouseCard key={house._id} house={house} />

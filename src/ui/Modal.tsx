@@ -7,9 +7,16 @@ interface ModalType {
   children: React.ReactNode;
   onClose: () => void;
   logo: string;
+  width?: string;
 }
 
-const Modal: React.FC<ModalType> = ({ open, children, onClose, logo }) => {
+const Modal: React.FC<ModalType> = ({
+  open,
+  children,
+  onClose,
+  logo,
+  width = "w-[calc(100vw-2rem)] md:max-w-lg",
+}) => {
   const modalref = useOutsideClick(onClose);
   useEffect(() => {
     if (open) {
@@ -21,10 +28,11 @@ const Modal: React.FC<ModalType> = ({ open, children, onClose, logo }) => {
 
   return (
     open && (
-      <div className="fixed backdrop-blur-sm  top-0 left-0 right-0 bottom-0 w-screen h-screen bg-secondery-800 bg-opacity-30 modal">
+      <div className="fixed backdrop-blur-sm top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black bg-opacity-30 modal z-50">
         <div
           ref={modalref}
-          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondery-50 rounded-lg p-4  transition-all duration-500 ease-out w-[calc(100vw-2rem)] md:max-w-lg max-h-[calc(100vh-2rem)] z-1001 bg-white"
+          className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-secondery-50 rounded-lg p-4  transition-all duration-500 ease-out max-h-[calc(100vh-2rem)] bg-white
+                        ${width}`}
         >
           <div className="relative flex flex-col items-center">
             <div className="flex justify-center w-full mb-4">
@@ -33,7 +41,7 @@ const Modal: React.FC<ModalType> = ({ open, children, onClose, logo }) => {
                 <TbX className="w-6 h-6" />
               </button>
             </div>
-            <div className="w-full">{children}</div>
+            <div className="w-full flex - justify-center">{children}</div>
           </div>
         </div>
       </div>

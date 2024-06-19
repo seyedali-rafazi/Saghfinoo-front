@@ -8,12 +8,9 @@ import http from "../../../services/https";
 
 interface ParamsType {
   houseGroup?: string;
-  location?: string;
-  year?: string;
   sort?: string;
-  rooms?: number;
   queryString?: {
-    rooms?: number;
+    rooms?: string;
   };
 }
 
@@ -25,8 +22,6 @@ export const fetchHouses = createAsyncThunk(
 
     const queryParams = new URLSearchParams();
     if (params.houseGroup) queryParams.append("houseGroup", params.houseGroup);
-    if (params.location) queryParams.append("location", params.location);
-    if (params.year) queryParams.append("year", params.year);
     if (params.sort) queryParams.append("sort", params.sort);
     if (params.queryString) {
       Object.entries(params.queryString).forEach(([key, value]) => {

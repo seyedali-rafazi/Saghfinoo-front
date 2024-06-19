@@ -5,7 +5,7 @@ type QueryStringContextProviderProps = {
 };
 
 interface QueryStringType {
-  rooms?: number;
+  rooms?: string;
 }
 
 // Define a type for the context value
@@ -16,7 +16,9 @@ interface QueryContextType {
 
 // Provide a default value for the context
 const defaultValue: QueryContextType = {
-  queryString: {},
+  queryString: {
+    rooms: "",
+  },
   setQueryString: () => {},
 };
 
@@ -25,7 +27,9 @@ const QueryContext = createContext<QueryContextType>(defaultValue);
 export const QueryStringContext: React.FC<QueryStringContextProviderProps> = ({
   children,
 }) => {
-  const [queryString, setQueryString] = useState<QueryStringType>({});
+  const [queryString, setQueryString] = useState<QueryStringType>({
+    rooms: "",
+  });
 
   const value = useMemo(
     () => ({ queryString, setQueryString }),

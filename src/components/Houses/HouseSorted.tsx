@@ -2,11 +2,10 @@ import { Select } from "@headlessui/react";
 import { FaArrowDownShortWide } from "react-icons/fa6";
 
 interface HouseSortedType {
-  limit: number;
   setSort: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const HouseSorted: React.FC<HouseSortedType> = (limit, setSort) => {
+const HouseSorted: React.FC<HouseSortedType> = ({ setSort }) => {
   const handelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);
   };
