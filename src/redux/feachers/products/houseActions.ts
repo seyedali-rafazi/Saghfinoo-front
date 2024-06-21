@@ -30,7 +30,6 @@ export const fetchHouses = createAsyncThunk(
         }
       });
     }
-    console.log(queryParams.toString());
 
     dispatch(fetchHouseRequest());
     try {

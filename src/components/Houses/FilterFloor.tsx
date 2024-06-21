@@ -1,22 +1,22 @@
 import { useEffect } from "react";
 import { useQueryContext } from "../../context/QueryStringContext";
-import FilterOptions from "./FilterOptions";
-import { RoomDetails } from "../../data/FilterData";
 import { activeType } from "../../types/indexType";
+import FilterOptions from "./FilterOptions";
+import { FloorDetails } from "../../data/FilterData";
 
-interface FilterRoomType {
+interface FilterFloorType {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<activeType>>;
 }
 
-const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
+const FilterFloor: React.FC<FilterFloorType> = ({ active, setActive }) => {
   const { queryString, setQueryString } = useQueryContext();
 
   const handelClick = (e: { id: number; text: string; value: string }) => {
-    setActive((prevUser) => ({ ...prevUser, activeRoom: e.id }));
+    setActive((prevUser) => ({ ...prevUser, activeFloor: e.id }));
     setQueryString((prevUser) => ({
       ...prevUser,
-      rooms: e.value,
+      floor: e.value,
     }));
   };
 
@@ -24,12 +24,12 @@ const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
 
   return (
     <FilterOptions
-      headerText="اتاق خواب"
+      headerText="طبقه"
       active={active}
-      items={RoomDetails}
+      items={FloorDetails}
       handelClick={handelClick}
     />
   );
 };
 
-export default FilterRoom;
+export default FilterFloor;

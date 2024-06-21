@@ -3,8 +3,6 @@ import { useUserContext } from "../../context/UserContext";
 const Signup: React.FC = () => {
   const { userState } = useUserContext();
 
-  console.log(userState);
-
   return (
     <div>
       <h1>Signup</h1>

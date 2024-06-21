@@ -1,22 +1,25 @@
 import { useEffect } from "react";
 import { useQueryContext } from "../../context/QueryStringContext";
-import FilterOptions from "./FilterOptions";
-import { RoomDetails } from "../../data/FilterData";
 import { activeType } from "../../types/indexType";
+import FilterOptions from "./FilterOptions";
+import { CollingSystemDetails } from "../../data/FilterData";
 
-interface FilterRoomType {
+interface FilterCollingSystemType {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<activeType>>;
 }
 
-const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
+const FilterCollingSystem: React.FC<FilterCollingSystemType> = ({
+  active,
+  setActive,
+}) => {
   const { queryString, setQueryString } = useQueryContext();
 
   const handelClick = (e: { id: number; text: string; value: string }) => {
-    setActive((prevUser) => ({ ...prevUser, activeRoom: e.id }));
+    setActive((prevUser) => ({ ...prevUser, activeCollingSystem: e.id }));
     setQueryString((prevUser) => ({
       ...prevUser,
-      rooms: e.value,
+      collingSystem: e.value,
     }));
   };
 
@@ -24,12 +27,12 @@ const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
 
   return (
     <FilterOptions
-      headerText="اتاق خواب"
+      headerText="سیستم سرمایشی"
       active={active}
-      items={RoomDetails}
+      items={CollingSystemDetails}
       handelClick={handelClick}
     />
   );
 };
 
-export default FilterRoom;
+export default FilterCollingSystem;

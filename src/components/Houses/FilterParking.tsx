@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useQueryContext } from "../../context/QueryStringContext";
 import FilterOptions from "./FilterOptions";
 import { ParkingDetails } from "../../data/FilterData";
+import { activeType } from "../../types/indexType";
 
-const FilterParking: React.FC = () => {
-  const [active, setActive] = useState(1);
+interface FilterParkingType {
+  active: number;
+  setActive: React.Dispatch<React.SetStateAction<activeType>>;
+}
+
+const FilterParking: React.FC<FilterParkingType> = ({ active, setActive }) => {
   const { queryString, setQueryString } = useQueryContext();
 
   const handelClick = (e: { id: number; text: string; value: string }) => {
-    setActive(e.id);
+    setActive((prevUser) => ({ ...prevUser, activeParking: e.id }));
     setQueryString((prevUser) => ({
       ...prevUser,
       parking: e.value,

@@ -8,7 +8,6 @@ import HousesInformation from "./HousesInformation";
 import HouseCard from "../../ui/HouseCard";
 import HouseSorted from "./HouseSorted";
 import { useQueryContext } from "../../context/QueryStringContext";
-import TestingFetch from "./TestingFetch";
 import Filters from "./Filters";
 
 interface FetchHousesType {
@@ -58,7 +57,6 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
         <Filters />
         <HouseSorted setSort={setSort} />
       </HousesInformation>
-      <TestingFetch />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full">
         {items.map((house: any) => (
           <HouseCard key={house._id} house={house} />

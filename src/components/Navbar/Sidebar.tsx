@@ -17,26 +17,31 @@ const SidebarOptions = [
     id: 1,
     text: "ثبت آگهی",
     icon: <Key />,
+    path: "",
   },
   {
     id: 2,
     text: "اجاره خانه",
     icon: <Plus />,
+    path: "/rent-house",
   },
   {
     id: 3,
     text: "خرید خانه",
     icon: <Home />,
+    path: "/buy-house",
   },
   {
     id: 4,
     text: "املاک و مستغلات",
     icon: <Amlak />,
+    path: "",
   },
   {
     id: 5,
     text: "مشاورین املاک",
     icon: <People />,
+    path: "",
   },
 ];
 
@@ -90,7 +95,8 @@ const Sidebar: React.FC<SidebarType> = ({ open, onClose }) => {
                 <Link
                   className="flex justify-between items-center py-3 px-3 text-sm font-medium"
                   key={SidebarOption.id}
-                  to={""}
+                  to={SidebarOption.path}
+                  onClick={onClose}
                 >
                   <div className="flex items-center gap-2">
                     {SidebarOption.icon}

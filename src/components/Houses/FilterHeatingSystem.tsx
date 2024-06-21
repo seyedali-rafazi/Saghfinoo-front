@@ -1,22 +1,25 @@
 import { useEffect } from "react";
 import { useQueryContext } from "../../context/QueryStringContext";
-import FilterOptions from "./FilterOptions";
-import { RoomDetails } from "../../data/FilterData";
 import { activeType } from "../../types/indexType";
+import FilterOptions from "./FilterOptions";
+import { HeatingSystemDetails } from "../../data/FilterData";
 
-interface FilterRoomType {
+interface FilterHeatingSystemType {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<activeType>>;
 }
 
-const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
+const FilterHeatingSystem: React.FC<FilterHeatingSystemType> = ({
+  active,
+  setActive,
+}) => {
   const { queryString, setQueryString } = useQueryContext();
 
   const handelClick = (e: { id: number; text: string; value: string }) => {
-    setActive((prevUser) => ({ ...prevUser, activeRoom: e.id }));
+    setActive((prevUser) => ({ ...prevUser, activeHeatingSystem: e.id }));
     setQueryString((prevUser) => ({
       ...prevUser,
-      rooms: e.value,
+      heatingSystem: e.value,
     }));
   };
 
@@ -24,12 +27,12 @@ const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
 
   return (
     <FilterOptions
-      headerText="اتاق خواب"
+      headerText="سیستم گرمایشی"
       active={active}
-      items={RoomDetails}
+      items={HeatingSystemDetails}
       handelClick={handelClick}
     />
   );
 };
 
-export default FilterRoom;
+export default FilterHeatingSystem;

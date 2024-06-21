@@ -1,22 +1,25 @@
 import { useEffect } from "react";
 import { useQueryContext } from "../../context/QueryStringContext";
 import FilterOptions from "./FilterOptions";
-import { RoomDetails } from "../../data/FilterData";
+import { WarhouseDetails } from "../../data/FilterData";
 import { activeType } from "../../types/indexType";
 
-interface FilterRoomType {
+interface FilterWarhouseType {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<activeType>>;
 }
 
-const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
+const FilterWarhouse: React.FC<FilterWarhouseType> = ({
+  active,
+  setActive,
+}) => {
   const { queryString, setQueryString } = useQueryContext();
 
   const handelClick = (e: { id: number; text: string; value: string }) => {
-    setActive((prevUser) => ({ ...prevUser, activeRoom: e.id }));
+    setActive((prevUser) => ({ ...prevUser, activeWarhouse: e.id }));
     setQueryString((prevUser) => ({
       ...prevUser,
-      rooms: e.value,
+      parking: e.value,
     }));
   };
 
@@ -24,12 +27,12 @@ const FilterRoom: React.FC<FilterRoomType> = ({ active, setActive }) => {
 
   return (
     <FilterOptions
-      headerText="اتاق خواب"
+      headerText="انباری"
       active={active}
-      items={RoomDetails}
+      items={WarhouseDetails}
       handelClick={handelClick}
     />
   );
 };
 
-export default FilterRoom;
+export default FilterWarhouse;

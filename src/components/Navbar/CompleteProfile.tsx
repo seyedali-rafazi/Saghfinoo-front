@@ -32,8 +32,6 @@ const CompleteProfile: React.FC<AutoModalType> = ({
     reset();
   };
 
-  console.log(openCompleteProfile);
-
   return (
     <Modal
       logo="تکمیل اطلاعات"
