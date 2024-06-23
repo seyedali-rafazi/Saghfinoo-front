@@ -7,6 +7,7 @@ import Map from "./components/Houses/SaghfinooMap";
 import RentHouse from "./pages/RentHouse";
 import BuyHouse from "./pages/BuyHouse";
 import ScrollToTop from "./ui/ScrollToTop";
+import HouseDetali from "./pages/HouseDetali";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/rent-house" element={<RentHouse />} />
           <Route path="/buy-house" element={<BuyHouse />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/house-details/:id" element={<HouseDetali />} />
         </Routes>
       </UserContextProvider>
     </QueryStringContext>

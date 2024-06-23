@@ -15,7 +15,7 @@ interface HouseCard {
 const HouseCard: React.FC<HouseCard> = ({ house }) => {
   return (
     <div className="space-y-5 border rounded-lg h-fit" key={house._id}>
-      <Link to={house._id}>
+      <Link to={`/house-details/${house._id}`}>
         <div className="relative w-full h-32 bg-cover rounded-lg">
           <img
             className="absolute inset-0 w-full h-full object-cover rounded-t-lg"
@@ -37,7 +37,7 @@ const HouseCard: React.FC<HouseCard> = ({ house }) => {
           قیمت&nbsp;{toPersianNumbersWithComma(house.price)}&nbsp;تومان
         </p>
         <Link
-          to={house._id}
+          to={`/house-details/${house._id}`}
           className="text-white bg-primary w-full p-2 rounded-md flex justify-center font-medium"
         >
           مشخصات کامل

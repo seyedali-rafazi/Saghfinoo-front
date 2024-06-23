@@ -16,6 +16,7 @@ interface FetchHousesType {
 
 const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   const dispatch: AppDispatch = useDispatch();
+  
   const { items, loading, limit } = useSelector(
     (state: RootState) => state.house
   );
