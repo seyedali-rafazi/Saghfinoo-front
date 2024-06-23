@@ -11,6 +11,7 @@ import FilterFloor from "./FilterFloor";
 import FilterCollingSystem from "./FilterCollingSystem";
 import FilterHeatingSystem from "./FilterHeatingSystem";
 import FilterFloorMaterial from "./FilterFloorMaterial";
+import SearchFilter from "./SearchFilter";
 
 interface FilterModalType {
   setFilterOpen: (open: boolean) => void;
@@ -41,7 +42,7 @@ const FilterModal: React.FC<FilterModalType> = ({
       open={filterOpen}
       width="h-full w-full md:w-2/3 lg:w-1/2 md:h-fit overflow-scroll "
     >
-      <div className="space-y-7 bg-white w-full overflow-scroll md:max-h-[calc(100vw-40rem)]">
+      <div className="space-y-7 bg-white w-full md:max-h-[calc(100vw-40rem)] mb-24">
         <div className="flex flex-col gap-5 justify-center items-center font-normal text-sm w-full">
           <FilterRoom active={active.activeRoom} setActive={setActive} />
           <FilterParking active={active.activeParking} setActive={setActive} />
@@ -72,6 +73,10 @@ const FilterModal: React.FC<FilterModalType> = ({
           />
           <FilterFloorMaterial
             active={active.activeFloorMaterial}
+            setActive={setActive}
+          />
+          <SearchFilter
+            onClose={() => setFilterOpen(false)}
             setActive={setActive}
           />
         </div>

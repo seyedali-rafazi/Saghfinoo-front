@@ -29,7 +29,7 @@ const FilterOptions: React.FC<FilterOptionsType> = ({
             }`}
             key={item.id}
           >
-            {item.text}
+            <p className="text-xs sm:text-sm">{item.text}</p>
           </button>
         ))}
       </div>
