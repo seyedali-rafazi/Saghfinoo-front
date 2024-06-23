@@ -8,9 +8,7 @@ import Loading from "../../ui/Loader";
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { error, houseById, loading } = useSelector(
-    (state: RootState) => state.houseById
-  );
+  const { loading } = useSelector((state: RootState) => state.houseById);
 
   const { id } = useParams<{ id: string }>();
 
@@ -23,7 +21,6 @@ const FetchHouseById: React.FC = () => {
   if (loading) {
     return <Loading />;
   }
-
 
   return <div className="space-y-5 w-full md:w-1/2"></div>;
 };
