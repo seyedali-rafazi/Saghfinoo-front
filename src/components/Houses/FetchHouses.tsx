@@ -16,7 +16,7 @@ interface FetchHousesType {
 
 const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   const dispatch: AppDispatch = useDispatch();
-  
+
   const { items, loading, limit } = useSelector(
     (state: RootState) => state.house
   );
@@ -59,9 +59,15 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
         <HouseSorted setSort={setSort} />
       </HousesInformation>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-        {items.map((house: any) => (
-          <HouseCard key={house._id} house={house} />
-        ))}
+        {items.length == 0
+          ? !loading && (
+              <p className="font-semibold w-full">
+                محصولی برای نمایش وجود ندارد
+              </p>
+            )
+          : items.map((house: any) => (
+              <HouseCard key={house._id} house={house} />
+            ))}
       </div>
       <div className="flex gap-6 flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
         {loading && <Skeleton cards={2} />}
