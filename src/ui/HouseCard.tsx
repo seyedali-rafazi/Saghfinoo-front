@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import { Favourite } from "../icons/housesIcon";
 import { toPersianNumbersWithComma } from "../utils/FrormatNumber";
+import FavourtieButton from "./FavourtieButton";
+import { useUserContext } from "../context/UserContext";
+import { PiBookmarkSimpleFill } from "react-icons/pi";
+import { PiBookmarkSimpleLight } from "react-icons/pi";
 
 interface HouseCard {
   house: {
@@ -13,6 +16,10 @@ interface HouseCard {
 }
 
 const HouseCard: React.FC<HouseCard> = ({ house }) => {
+  const { userState } = useUserContext();
+
+  const userFav = userState?.user?.data.user?.favoriteProduct;
+
   return (
     <div className="space-y-5 border rounded-lg h-fit" key={house._id}>
       <Link to={`/house-details/${house._id}`}>
@@ -28,9 +35,18 @@ const HouseCard: React.FC<HouseCard> = ({ house }) => {
       <div className="flex flex-col gap-2 p-4">
         <div className="flex justify-between items-center text-gray-350 text-sm font-medium">
           <h4>{house.title}</h4>
-          <button>
-            <Favourite />
-          </button>
+          {userFav &&
+          userFav.map((FavItems: any) => FavItems._id).includes(house._id) ? (
+            <FavourtieButton
+              id={house._id}
+              icon={<PiBookmarkSimpleFill className="w-7 h-7 text-gray-800" />}
+            />
+          ) : (
+            <FavourtieButton
+              id={house._id}
+              icon={<PiBookmarkSimpleLight className="w-7 h-7 text-gray-800" />}
+            />
+          )}
         </div>
         <p className="font-medium text-gray-500">شهر&nbsp;{house.city}</p>
         <p className="font-medium text-sm">

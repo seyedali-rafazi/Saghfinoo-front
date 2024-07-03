@@ -13,8 +13,6 @@ interface ParamsType {
 export const fetchHouseById = createAsyncThunk(
   "user/fetchUser",
   async ({ id }: ParamsType, { dispatch }) => {
-    console.log(id);
-
     dispatch(houseByIdRequest());
     try {
       const response = await http.get(`/product/${id}`);
