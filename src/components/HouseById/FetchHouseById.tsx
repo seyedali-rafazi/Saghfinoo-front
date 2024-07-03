@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchHouseById } from "../../redux/feachers/productById/productByIdAction";
 import Loading from "../../ui/Loader";
+import FetchHouseInformation from "./FetchHouseInformation";
 
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { loading } = useSelector((state: RootState) => state.houseById);
-
+  const { loading , houseById} = useSelector((state: RootState) => state.houseById);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -22,7 +22,11 @@ const FetchHouseById: React.FC = () => {
     return <Loading />;
   }
 
-  return <div className="space-y-5 w-full md:w-1/2"></div>;
+  return (
+    <div className="space-y-5 w-full h-full">
+      <FetchHouseInformation houseById={houseById} />
+    </div>
+  );
 };
 
 export default FetchHouseById;

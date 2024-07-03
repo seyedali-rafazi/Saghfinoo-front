@@ -1,8 +1,8 @@
-interface headerText {
+interface HeaderText {
   headerText: string;
 }
 
-const HousesHeader: React.FC<headerText> = ({ headerText }) => {
+const HousesHeader: React.FC<HeaderText> = ({ headerText }) => {
   return (
     <div>
       <h1 className="text-xl font-bold">{headerText}</h1>
