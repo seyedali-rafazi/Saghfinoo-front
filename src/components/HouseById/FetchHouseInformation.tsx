@@ -1,4 +1,3 @@
-import SaghfinooMap from "../Houses/SaghfinooMap";
 import FechHousePrice from "./FechHousePrice";
 import FetchHouseDescription from "./FetchHouseDescription";
 import FetchHousrHeader from "./FetchHousrHeader";
@@ -6,15 +5,12 @@ import HouseCompleteFechers from "./HouseCompleteFechers";
 import HouseFeachers from "./HouseFeachers";
 
 interface FetchHouseInformationType {
-  houseById: any;
+  fetchHouse: any;
 }
 
 const FetchHouseInformation: React.FC<FetchHouseInformationType> = ({
-  houseById,
+  fetchHouse,
 }) => {
-  let fetchHouse = houseById?.data?.product;
-  console.log(fetchHouse);
-
   return (
     <div className="w-full md:w-1/2 space-y-14">
       <FetchHousrHeader

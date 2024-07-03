@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { fetchHouseById } from "../../redux/feachers/productById/productByIdAction";
 import Loading from "../../ui/Loader";
 import FetchHouseInformation from "./FetchHouseInformation";
+import HousePhoto from "./HousePhoto";
 
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -20,10 +21,16 @@ const FetchHouseById: React.FC = () => {
     }
   }, [dispatch, id]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
+    let fetchHouse = houseById?.data?.product;
 
   return (
-    <div className="space-y-5 w-full h-full">
-      {loading ? <Loading /> : <FetchHouseInformation houseById={houseById} />}
+    <div className="flex flex-col-reverse md:flex-row gap-4 w-full h-full">
+      <FetchHouseInformation fetchHouse={fetchHouse} />
+      <HousePhoto fetchHouse={fetchHouse} />
     </div>
   );
 };

@@ -36,10 +36,12 @@ const HouseFeachers: React.FC<HouseFeachersType> = ({ floor, rooms }) => {
         >
           <div className="flex gap-2">
             {feacher.icon}
-            <p className="font-bold text-xl">{feacher.title}</p>
+            <p className="font-bold text-base md:text-lg">{feacher.title}</p>
           </div>
           <div className="w-full">
-            <p className="w-full text-center font-medium">{feacher.text}</p>
+            <p className="w-full text-center text-sm md:text-base font-medium">
+              {feacher.text}
+            </p>
           </div>
         </div>
       ))}

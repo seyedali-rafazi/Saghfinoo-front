@@ -85,12 +85,12 @@ const HouseCompleteFechers: React.FC<HouseCompleteFechersType> = ({
   return (
     <div className="space-y-4">
       <h2 className="font-semibold text-xl">امکانات</h2>
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap justify-center items-center">
         {Feachers.map((fecher) => (
           <div key={fecher.id} className="w-1/2 flex gap-2 py-3">
             {fecher.icon}
-            <p className="font-medium">{fecher.text}</p>
-            <p className="font-medium">{fecher.body}</p>
+            <p className="font-medium text-sm md:text-base">{fecher.text}</p>
+            <p className="font-medium text-sm md:text-base">{fecher.body}</p>
           </div>
         ))}
       </div>

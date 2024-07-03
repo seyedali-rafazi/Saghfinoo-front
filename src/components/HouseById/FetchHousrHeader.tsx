@@ -16,7 +16,7 @@ const FetchHousrHeader: React.FC<FetchHousrHeaderType> = ({
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-center">
           <div>
-            <p className="font-medium text-gray-400">
+            <p className="font-medium text-sm md:text-base text-gray-400">
               {titleGroup} خانه در {city}
             </p>
           </div>
@@ -30,7 +30,7 @@ const FetchHousrHeader: React.FC<FetchHousrHeaderType> = ({
           </div>
         </div>
         <div>
-          <p className="font-bold text-xl">{title}</p>
+          <p className="font-bold text-lg lg:text-xl">{title}</p>
         </div>
       </div>
     </div>
