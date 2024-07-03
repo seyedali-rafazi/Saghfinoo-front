@@ -5,7 +5,7 @@ import { markers } from "../../data/MapMarker";
 
 const SaghfinooMap: React.FC = () => {
   return (
-    <div className="w-1/2 hidden md:block z-0">
+    <div className="w-full h-56 hidden md:block z-0">
       <MapContainer center={[35.6892, 51.389]} zoom={11}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

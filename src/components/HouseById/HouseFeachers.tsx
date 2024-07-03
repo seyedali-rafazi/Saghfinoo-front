@@ -1,4 +1,5 @@
 import { Floor, Metr, Room } from "../../icons/FetchHouseIcon";
+import { toPersianNumbers } from "../../utils/FrormatNumber";
 
 interface HouseFeachersType {
   floor: number;
@@ -10,24 +11,24 @@ const HouseFeachers: React.FC<HouseFeachersType> = ({ floor, rooms }) => {
     {
       id: 1,
       title: "متراژ",
-      text: "115 متر",
+      text: ` ${toPersianNumbers("115")} متر`,
       icon: <Metr />,
     },
     {
       id: 2,
       title: "اتاق",
-      text: `${rooms} اتاق`,
+      text: `${rooms ? toPersianNumbers(rooms) : "۰"} اتاق`,
       icon: <Room />,
     },
     {
       id: 3,
       title: "طبقه",
-      text: ` طبقه ${floor}`,
+      text: ` طبقه ${floor ? toPersianNumbers(floor) : "۰"}`,
       icon: <Floor />,
     },
   ];
   return (
-    <div className="space-y-5 w-full flex justify-between md:px-10 items-center ">
+    <div className="w-full flex justify-between items-center ">
       {Feachers.map((feacher) => (
         <div
           className="flex flex-col justify-center items-center"

@@ -1,15 +1,19 @@
 import { Warn } from "../../icons/FetchHouseIcon";
+import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
 
 interface FechHousePriceType {
-  city: string;
+  city?: string;
+  price: number;
 }
 
-const FechHousePrice: React.FC<FechHousePriceType> = ({ city }) => {
+const FechHousePrice: React.FC<FechHousePriceType> = ({ city, price }) => {
   return (
     <div className="w-full space-y-4">
       <div className="flex justify-between items-center p-3 border border-gray-250 rounded-xl">
         <p className="font-bold text-xl">قیمت</p>
-        <p className="font-medium">600 تومان</p>
+        <p className="font-medium">
+          {price ? toPersianNumbersWithComma(price) : "۰"} تومان
+        </p>
       </div>
       <div className="flex flex-col gap-2">
         <div className="flex justify-between items-center">

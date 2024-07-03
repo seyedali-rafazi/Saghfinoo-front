@@ -9,7 +9,9 @@ import FetchHouseInformation from "./FetchHouseInformation";
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { loading , houseById} = useSelector((state: RootState) => state.houseById);
+  const { loading, houseById } = useSelector(
+    (state: RootState) => state.houseById
+  );
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -18,13 +20,10 @@ const FetchHouseById: React.FC = () => {
     }
   }, [dispatch, id]);
 
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <div className="space-y-5 w-full h-full">
-      <FetchHouseInformation houseById={houseById} />
+      {loading ? <Loading /> : <FetchHouseInformation houseById={houseById} />}
     </div>
   );
 };
