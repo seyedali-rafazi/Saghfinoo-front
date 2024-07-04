@@ -6,6 +6,7 @@ import { fetchHouseById } from "../../redux/feachers/productById/productByIdActi
 import Loading from "../../ui/Loader";
 import FetchHouseInformation from "./FetchHouseInformation";
 import HousePhoto from "./HousePhoto";
+import FetchHouseSwiper from "./FetchHouseSwiper";
 
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -25,12 +26,15 @@ const FetchHouseById: React.FC = () => {
     return <Loading />;
   }
 
-    let fetchHouse = houseById?.data?.product;
+  let fetchHouse = houseById?.data?.product;
 
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-4 w-full h-full">
-      <FetchHouseInformation fetchHouse={fetchHouse} />
-      <HousePhoto fetchHouse={fetchHouse} />
+    <div className="space-y-14">
+      <div className="flex flex-col-reverse md:flex-row gap-4 w-full h-full">
+        <FetchHouseInformation fetchHouse={fetchHouse} />
+        <HousePhoto fetchHouse={fetchHouse} />
+      </div>
+      <FetchHouseSwiper />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const BuyHouse: React.FC = () => {
         <HousesHeader headerText="خرید خانه" />
         <div className="flex gap-12">
           <FetchHouses city="خرید" />
-            <SaghfinooMap />
+          <SaghfinooMap />
         </div>
       </div>
     </div>

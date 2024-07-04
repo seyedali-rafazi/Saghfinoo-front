@@ -11,6 +11,7 @@ interface SwiperType {
   lg?: number;
   xl?: number;
   spaceBetween?: number;
+  slidesPerView?: number;
 }
 
 const SaghfinooSwiper: React.FC<SwiperType> = ({
@@ -20,11 +21,12 @@ const SaghfinooSwiper: React.FC<SwiperType> = ({
   lg = 2,
   xl = 3,
   spaceBetween = 20,
+  slidesPerView = 1,
 }) => {
   return (
     <div className="flex">
       <Swiper
-        slidesPerView={1}
+        slidesPerView={slidesPerView}
         spaceBetween={10}
         modules={[Keyboard, Pagination, Navigation]}
         breakpoints={{
