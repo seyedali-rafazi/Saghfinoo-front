@@ -125,6 +125,7 @@ const SaveFavourite = () => {
     </svg>
   );
 };
+
 const SaveFavouriteMini = () => {
   return (
     <svg

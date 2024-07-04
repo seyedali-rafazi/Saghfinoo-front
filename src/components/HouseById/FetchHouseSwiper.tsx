@@ -7,13 +7,12 @@ import { fetchHouses } from "../../redux/feachers/products/houseActions";
 import { SaveFavourite, SaveFavouriteMini } from "../../icons/FetchHouseIcon";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
 import { Link } from "react-router-dom";
+import Skeleton from "../../ui/Skeleton";
 
 const FetchHouseSwiper: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { items, loading, limit } = useSelector(
-    (state: RootState) => state.house
-  );
+  const { items, loading } = useSelector((state: RootState) => state.house);
 
   const params = {
     houseGroup: "",
@@ -26,7 +25,7 @@ const FetchHouseSwiper: React.FC = () => {
 
   console.log(items);
 
-  return (
+  return !loading ? (
     <SaghfinooSwiper xl={3} sm={2} slidesPerView={2}>
       {items.map((item) => (
         <SwiperSlide key={item._id} className="flex justify-center">
@@ -65,6 +64,10 @@ const FetchHouseSwiper: React.FC = () => {
         </SwiperSlide>
       ))}
     </SaghfinooSwiper>
+  ) : (
+    <div className="flex gap-3">
+      <Skeleton cards={3} />
+    </div>
   );
 };
 
