@@ -8,6 +8,7 @@ import RentHouse from "./pages/RentHouse";
 import BuyHouse from "./pages/BuyHouse";
 import ScrollToTop from "./ui/ScrollToTop";
 import HouseDetali from "./pages/HouseDetali";
+import AdvertisingRegion from "./pages/advertising/AdvertisingRegion";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/buy-house" element={<BuyHouse />} />
           <Route path="/map" element={<Map />} />
           <Route path="/house-details/:id" element={<HouseDetali />} />
+          <Route path="/ad-region" element={<AdvertisingRegion />} />
         </Routes>
       </UserContextProvider>
     </QueryStringContext>

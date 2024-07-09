@@ -31,18 +31,6 @@ const SidebarOptions = [
     icon: <Home />,
     path: "/buy-house",
   },
-  {
-    id: 4,
-    text: "املاک و مستغلات",
-    icon: <Amlak />,
-    path: "",
-  },
-  {
-    id: 5,
-    text: "مشاورین املاک",
-    icon: <People />,
-    path: "",
-  },
 ];
 
 interface SidebarType {
