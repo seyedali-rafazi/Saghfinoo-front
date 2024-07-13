@@ -5,7 +5,7 @@ interface TextFieldProps {
   name: string;
   type?: string;
   value?: string;
-  onChange?: (e: React.ChangeEventHandler<HTMLInputElement>) => void;
+  onChange?: (e: any) => void;
   register?: any;
   validationSchema?: {
     required?: string;
