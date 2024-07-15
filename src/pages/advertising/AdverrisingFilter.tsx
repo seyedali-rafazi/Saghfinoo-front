@@ -1,7 +1,8 @@
-import AdSecond from "../../components/AdSecond/AdSecond";
 import { useAdQueryContext } from "../../context/AdQueryContext";
 
-const AdvertisingPrice: React.FC = () => {
+const AdverrisingFilter: React.FC = () => {
+  const { adQueryString, setAdQueryString } = useAdQueryContext();
+  console.log(adQueryString);
 
   return (
     <div className="w-full h-full min-h-screen bg-slate-200 md:px-24 md:py-24">
@@ -13,12 +14,10 @@ const AdvertisingPrice: React.FC = () => {
             alt=""
           />
         </div>
-        <div className="h-full w-full p-5 md:w-2/3">
-          <AdSecond />
-        </div>
+        <div className="h-full w-full p-5 md:w-2/3"></div>
       </div>
     </div>
   );
 };
 
-export default AdvertisingPrice;
+export default AdverrisingFilter;

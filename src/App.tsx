@@ -11,6 +11,7 @@ import ScrollToTop from "./ui/ScrollToTop";
 import HouseDetali from "./pages/HouseDetali";
 import AdvertisingRegion from "./pages/advertising/AdvertisingRegion";
 import AdvertisingPrice from "./pages/advertising/AdvertisingPrice";
+import AdverrisingFilter from "./pages/advertising/AdverrisingFilter";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/house-details/:id" element={<HouseDetali />} />
             <Route path="/ad-region" element={<AdvertisingRegion />} />
             <Route path="/ad-price" element={<AdvertisingPrice />} />
+            <Route path="/ad-filter" element={<AdverrisingFilter />} />
           </Routes>
         </UserContextProvider>
       </QueryStringContext>
