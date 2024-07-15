@@ -5,24 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
 import SelectField from "../../ui/SelectField";
-
-const options = [
-  {
-    id: 1,
-    value: "",
-    text: "...",
-  },
-  {
-    id: 2,
-    value: "665a390ebcd7885317cd4b1e",
-    text: "خرید",
-  },
-  {
-    id: 3,
-    value: "665a3964bcd7885317cd4b23",
-    text: "اجاره",
-  },
-];
+import { options } from "../../data/AdData";
 
 const AdFirstContent: React.FC = () => {
   const {
@@ -30,7 +13,7 @@ const AdFirstContent: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { adQueryString, setAdQueryString } = useAdQueryContext();
+  const { setAdQueryString } = useAdQueryContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();

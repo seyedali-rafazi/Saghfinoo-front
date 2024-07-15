@@ -10,7 +10,7 @@ const AdSecondContent: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { adQueryString, setAdQueryString } = useAdQueryContext();
+  const { setAdQueryString } = useAdQueryContext();
   const navigate = useNavigate();
 
   const onCkickSubmit = (data: any) => {
