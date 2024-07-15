@@ -14,8 +14,6 @@ const AdFirstContent: React.FC = () => {
     formState: { errors },
   } = useForm<FormData>();
   const { setAdQueryString } = useAdQueryContext();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
   const onCkickSubmit = (data: any) => {
@@ -41,7 +39,6 @@ const AdFirstContent: React.FC = () => {
           errors={errors}
           name="title"
           type="text"
-          onChange={(v) => setTitle(v.target.value)}
           register={register}
           validationSchema={{
             required: "موضوع الزامی است",
@@ -53,7 +50,6 @@ const AdFirstContent: React.FC = () => {
           errors={errors}
           name="description"
           type="text"
-          onChange={(v) => setDescription(v.target.value)}
           register={register}
           validationSchema={{
             required: "توضیحات ضروری است",
@@ -72,7 +68,6 @@ const AdFirstContent: React.FC = () => {
           errors={errors}
           name="offPrice"
           type="number"
-          onChange={(v) => setDescription(v.target.value)}
           register={register}
           validationSchema={{
             required: "توضیحات ضروری است",
