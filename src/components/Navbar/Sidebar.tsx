@@ -5,8 +5,6 @@ import {
   Plus,
   Home,
   Key,
-  Amlak,
-  People,
   LeftArrow,
 } from "../../icons/SidebarIcon";
 import { Link } from "react-router-dom";

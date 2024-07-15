@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import { useAdQueryContext } from "../../context/AdQueryContext";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
 import SelectField from "../../ui/SelectField";
