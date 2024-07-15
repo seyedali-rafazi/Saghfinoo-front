@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         "home-introduction": "url('/photos/Home.png')",
+        "ad-background": "url('/photos/advertising-background.png')",
       },
       container: {
         center: true,

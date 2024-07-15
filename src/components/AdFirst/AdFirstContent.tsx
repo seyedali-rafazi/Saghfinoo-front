@@ -4,6 +4,25 @@ import { useAdQueryContext } from "../../context/AdQueryContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
+import SelectField from "../../ui/SelectField";
+
+const options = [
+  {
+    id: 1,
+    value: "",
+    text: "...",
+  },
+  {
+    id: 2,
+    value: "665a390ebcd7885317cd4b1e",
+    text: "خرید",
+  },
+  {
+    id: 3,
+    value: "665a3964bcd7885317cd4b23",
+    text: "اجاره",
+  },
+];
 
 const AdFirstContent: React.FC = () => {
   const {
@@ -21,6 +40,7 @@ const AdFirstContent: React.FC = () => {
       ...prevUser,
       title: data.title,
       description: data.description,
+      houseGroup: data.houseGroup,
     }));
     navigate("/ad-price");
   };
@@ -54,6 +74,13 @@ const AdFirstContent: React.FC = () => {
           validationSchema={{
             required: "توضیحات ضروری است",
           }}
+        />
+        <SelectField
+          name="houseGroup"
+          errors={errors}
+          register={register}
+          options={options}
+          required="نوع معامله را انتخاب کنید"
         />
       </div>
       <div className="flex gap-3 w-full max-w-md">
