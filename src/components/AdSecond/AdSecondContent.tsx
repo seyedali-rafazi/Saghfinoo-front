@@ -3,6 +3,7 @@ import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
 import TextField from "../../ui/TextField";
 import { useAdQueryContext } from "../../context/AdQueryContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const AdSecondContent: React.FC = () => {
   const {
@@ -12,15 +13,22 @@ const AdSecondContent: React.FC = () => {
   } = useForm<FormData>();
   const { setAdQueryString } = useAdQueryContext();
   const navigate = useNavigate();
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onCkickSubmit = (data: any) => {
     setAdQueryString((prevUser) => ({
       ...prevUser,
-      rooms: data.rooms,
-      floor: data.floor,
+      rooms: Number(data.rooms),
+      floor: Number(data.floor),
     }));
-    navigate("/ad-filter");
+    setFormSubmitted(true);
   };
+  
+  useEffect(() => {
+    if (formSubmitted) {
+      navigate("/ad-filter");
+    }
+  }, [formSubmitted, navigate]);
 
   return (
     <form

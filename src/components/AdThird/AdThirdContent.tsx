@@ -2,7 +2,11 @@ import { useForm } from "react-hook-form";
 import { useAdQueryContext } from "../../context/AdQueryContext";
 import { useNavigate } from "react-router-dom";
 import TextField from "../../ui/TextField";
-import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
+import {
+  AdButtonBack,
+  AdButtonContinue,
+  AdButtonSubmit,
+} from "../../ui/AdButton";
 import SelectField from "../../ui/SelectField";
 import {
   collingSystem,
@@ -10,6 +14,10 @@ import {
   heatingSystem,
   wcType,
 } from "../../data/AdData";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store/store";
+import { addProduct } from "../../redux/feachers/addProduct/addProductActions";
+import { useEffect, useState } from "react";
 
 const AdThirdContent: React.FC = () => {
   const {
@@ -17,22 +25,32 @@ const AdThirdContent: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { setAdQueryString } = useAdQueryContext();
-  const navigate = useNavigate();
+  const { adQueryString, setAdQueryString } = useAdQueryContext();
+  const dispatch = useDispatch<AppDispatch>();
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onCkickSubmit = (data: any) => {
     setAdQueryString((prevUser) => ({
       ...prevUser,
-      parking: data.parking,
-      WC: data.WC,
+      parking: Number(data.parking),
+      WC: Number(data.WC),
       WCType: data.WCType,
-      warHouse: data.warHouse,
-      elevator: data.elevator,
+      warHouse: Number(data.warHouse),
+      elevator: Number(data.elevator),
       collingSystem: data.collingSystem,
       floorMaterial: data.floorMaterial,
+      heatingSystem: data.heatingSystem,
+      imageLink: "https://s30.picofile.com/file/8476525826/8_min.jpg",
+      slug: "villa-b44c81e5-3d02-4e35-857f-982a3de625sfdfsdj",
+      city: "تهران",
     }));
-    navigate("/ad-filter");
+    setFormSubmitted(true);
   };
+  useEffect(() => {
+    if (formSubmitted) {
+      dispatch(addProduct(adQueryString));
+    }
+  }, [formSubmitted]);
 
   return (
     <form
@@ -115,7 +133,7 @@ const AdThirdContent: React.FC = () => {
       </div>
       <div className="flex gap-3 w-full max-w-md">
         <AdButtonBack path="/ad-price" />
-        <AdButtonContinue />
+        <AdButtonSubmit />
       </div>
     </form>
   );

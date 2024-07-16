@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AdButtonBack, AdButtonContinue } from "../../ui/AdButton";
 import SelectField from "../../ui/SelectField";
 import { options } from "../../data/AdData";
+import { useEffect, useState } from "react";
 
 const AdFirstContent: React.FC = () => {
   const {
@@ -14,6 +15,7 @@ const AdFirstContent: React.FC = () => {
   } = useForm<FormData>();
   const { setAdQueryString } = useAdQueryContext();
   const navigate = useNavigate();
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const onCkickSubmit = (data: any) => {
     setAdQueryString((prevUser) => ({
@@ -21,10 +23,18 @@ const AdFirstContent: React.FC = () => {
       title: data.title,
       description: data.description,
       houseGroup: data.houseGroup,
-      offPrice: data.offPrice,
+      offPrice: Number(data.offPrice),
+      price: 435345345,
+      discount: 0,
     }));
-    navigate("/ad-price");
+    setFormSubmitted(true);
   };
+
+  useEffect(() => {
+    if (formSubmitted) {
+      navigate("/ad-price");
+    }
+  }, [formSubmitted, navigate]);
 
   return (
     <form
