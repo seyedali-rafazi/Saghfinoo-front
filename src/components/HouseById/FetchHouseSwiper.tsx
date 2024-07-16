@@ -20,6 +20,7 @@ const FetchHouseSwiper: React.FC = () => {
   };
 
   useEffect(() => {
+    
     dispatch(fetchHouses(params));
   }, [dispatch]);
 
