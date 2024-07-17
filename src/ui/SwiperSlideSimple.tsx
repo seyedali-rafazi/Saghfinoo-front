@@ -22,7 +22,7 @@ const SwiperSlideSimple: React.FC<SwiperSlideSimpleType> = ({
         </div>
         <div className="flex flex-col justify-center items-center w-full py-5">
           <p className="font-bold">{header}</p>
-          <p className="p-2">{truncateText({ str: text, length: 50 })}</p>
+          <p className="p-2 font-medium">{truncateText({ str: text, length: 50 })}</p>
         </div>
       </div>
     </SwiperSlide>

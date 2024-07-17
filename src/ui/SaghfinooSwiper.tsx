@@ -1,7 +1,7 @@
 import React from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Keyboard, Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
 
 interface SwiperType {
@@ -28,7 +28,8 @@ const SaghfinooSwiper: React.FC<SwiperType> = ({
       <Swiper
         slidesPerView={slidesPerView}
         spaceBetween={10}
-        modules={[Keyboard, Pagination, Navigation]}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        modules={[Keyboard, Pagination, Navigation, Autoplay]}
         breakpoints={{
           450: {
             slidesPerView: sm,

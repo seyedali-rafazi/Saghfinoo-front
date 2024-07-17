@@ -6,10 +6,10 @@ const HomeCounseling: React.FC = () => {
   return (
     <div className="mx-6 md:mx-14 my-10 space-y-8 text-gray-800">
       <div className="flex flex-col justify-center items-center">
-        <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl">
-          همه به شما مشاوره می‌دهند!{" "}
+        <h2 className="font-bold text-xl xl:text-3xl">
+          همه به شما مشاوره می‌دهند!
         </h2>
-        <h4 className="font-medium text-xl lg:text-2xl">
+        <h4 className="font-medium text-lg lg:text-xl text-center">
           اما در سقفینو مشاوران املاک کِنار شما می‌مانند
         </h4>
       </div>
@@ -26,7 +26,7 @@ const HomeCounseling: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <p className="p-3 text-center font-medium text-xl">
+                  <p className="p-3 text-center font-medium text-base">
                     {item.homeType}
                   </p>
                 </div>
