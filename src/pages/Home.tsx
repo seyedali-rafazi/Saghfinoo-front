@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import HomeCounseling from "../components/Home/HomeCounseling";
 import HomeIntro from "../components/Home/HomeIntro";
 import HomeNews from "../components/Home/HomeNews";
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
         <SaghfinooHouseType />
         <HomeCounseling />
         <HomeNews />
+        <Footer />
       </div>
     </div>
   );
