@@ -6,10 +6,10 @@ import { SaghfinooHpouseDetails } from "../../data/HomeData";
 const SaghfinooHouseType: React.FC = () => {
   return (
     <div className="my-10 space-y-8 text-gray-800 max-w-[1640px] mx-auto">
-      <h2 className="font-bold text-lg md:text-xl lg:text-2xl mx-6">
+      <h2 className="font-bold text-xl xl:text-2xl mx-10 sm:mx-12 lg:mx-14">
         در سقفینو دنبال چه نوع ملکی هستید
       </h2>
-      <div className="mx-6">
+      <div className="mx-10 sm:mx-12 md:mx-14">
         <SaghfinooSwiper xl={4} lg={4} md={3} sm={2}>
           {SaghfinooHpouseDetails.map((item) => (
             <SwiperSlide key={item.id}>
