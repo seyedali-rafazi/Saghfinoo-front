@@ -14,17 +14,19 @@ const HomeCounseling: React.FC = () => {
         </h4>
       </div>
       <div className="max-w-[1240px] mx-auto">
-        <SaghfinooSwiper xl={3} lg={3}>
+        <SaghfinooSwiper xl={3} lg={3} >
           {Counseling.map((item) => (
             <SwiperSlide key={item.id} className="flex justify-center">
               <div className="flex flex-col justify-center items-center rounded-lg border border-gray-200 max-w-56 min-h-52 p-5 shadow-lg">
-                <div className="w-[200px]">
-                  <img
-                    className="w-full h-full object-cover rounded-t-lg"
-                    src={item.image}
-                    alt=""
-                  />
-                </div>
+                <img
+                  role="presentation"
+                  onError={(e) => {
+                    e.currentTarget.src = "/photos/default.webp";
+                  }}
+                  className="w-full h-full object-cover rounded-t-lg"
+                  src={item.image}
+                  alt="HomeCounseling"
+                />
                 <div>
                   <p className="p-3 text-center font-medium text-base">
                     {item.homeType}

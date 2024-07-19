@@ -15,7 +15,7 @@ const SidebarOptions = [
     id: 1,
     text: "ثبت آگهی",
     icon: <Key />,
-    path: "",
+    path: "/ad-region",
   },
   {
     id: 2,

@@ -10,7 +10,7 @@ const SaghfinooHouseType: React.FC = () => {
         در سقفینو دنبال چه نوع ملکی هستید
       </h2>
       <div className="mx-10 sm:mx-12 md:mx-14">
-        <SaghfinooSwiper xl={4} lg={4} md={3} sm={2}>
+        <SaghfinooSwiper xl={4} lg={3} md={2} sm={2}>
           {SaghfinooHpouseDetails.map((item) => (
             <SwiperSlide key={item.id}>
               <SwiperSlideSimple

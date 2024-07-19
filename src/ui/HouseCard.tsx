@@ -24,6 +24,10 @@ const HouseCard: React.FC<HouseCard> = ({ house }) => {
       <Link to={`/house-details/${house._id}`}>
         <div className="relative w-full h-32 bg-cover rounded-lg">
           <img
+            role="presentation"
+            onError={(e) => {
+              e.currentTarget.src = "/photos/default.webp";
+            }}
             className="absolute inset-0 w-full h-full object-cover rounded-t-lg"
             src={house.imageLink}
             alt=""

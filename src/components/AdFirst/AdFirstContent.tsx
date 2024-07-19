@@ -79,7 +79,7 @@ const AdFirstContent: React.FC = () => {
           type="number"
           register={register}
           validationSchema={{
-            required: "توضیحات ضروری است",
+            required: "مبلغ ضروری است",
           }}
         />
       </div>

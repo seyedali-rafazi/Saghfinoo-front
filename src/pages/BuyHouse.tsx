@@ -1,3 +1,4 @@
+import Footer from "../components/Footer/Footer";
 import FetchHouses from "../components/Houses/FetchHouses";
 import HousesHeader from "../components/Houses/HousesHeader";
 import SaghfinooMap from "../components/Houses/SaghfinooMap";
@@ -14,6 +15,7 @@ const BuyHouse: React.FC = () => {
           <SaghfinooMap />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

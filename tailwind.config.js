@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "home-introduction": "url('/photos/Home.png')",
-        "ad-background": "url('/photos/advertising-background.png')",
+        "home-introduction": "url('/photos/Home.webp')",
+        "ad-background": "url('/photos/advertising-background.webp')",
       },
       container: {
         center: true,

@@ -36,6 +36,10 @@ const FetchHouseSwiper: React.FC = () => {
           >
             <div className="relative w-full h-[100px] sm:h-[170px] bg-cover rounded-lg">
               <img
+                role="presentation"
+                onError={(e) => {
+                  e.currentTarget.src = "/photos/default.webp";
+                }}
                 className="absolute w-full h-full object-cover rounded-t-lg"
                 src={item.imageLink}
                 alt=""

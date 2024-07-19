@@ -15,8 +15,16 @@ const SaghfinooSummery: React.FC = () => {
             <SwiperSlide key={item.id}>
               <div className="flex flex-col bg-gray-100 gap-8 rounded-lg border border-gray-200">
                 <div className="flex flex-col gap-6">
-                  <div>
-                    <img className="rounded-lg" src={item.image} alt="" />
+                  <div className="min-h-48">
+                    <img
+                      role="presentation"
+                      onError={(e) => {
+                        e.currentTarget.src = "/photos/default.webp";
+                      }}
+                      className="rounded-lg"
+                      src={item.image}
+                      alt=""
+                    />
                   </div>
                   <div className="p-5">
                     <h4 className="text-center font-black text-lg">
