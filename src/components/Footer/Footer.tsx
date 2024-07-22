@@ -3,7 +3,7 @@ import FooterContent from "./FooterContent";
 
 const Footer: React.FC = () => {
   return (
-    <div className="flex flex-col  justify-between pt-5 px-5 w-full min-h-96 bg-gray-100">
+    <div className="flex flex-col justify-between pt-5 px-5 w-full min-h-96 bg-gray-100">
       <div className="w-full">
         <h1 className="font-bold text-xl md:text-3xl text-center">
           سقفینو؛ سقفی ایده‌آل برای زندگی
