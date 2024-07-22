@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Food Ordering Frontend App
+### See [Live](https://saghfinoo.vercel.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+This is the frontend application for a real estate platform, built using React.js. The app provides a user-friendly interface for users to browse properties, view detailed property information, and manage their property listings.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- User authentication (signup, login)
+- Property browsing and filtering
+- Detailed property information
+- Property listing management
+- Favorites and saved searches
+- Responsive design
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- **React.js**: A JavaScript library for building user interfaces.
+- **Headless UI**: For building accessible UI components.
+- **Axios**: For HTTP requests.
+- **React Hook Form**: For form handling.
+- **React Hot Toast**: For notifications.
+- **React Icons**: For icons.
+- **React Router DOM**: For client-side routing.
+- **Swiper**: For carousel/slider functionality.
+- **Leaflet**: For interactive maps.
+- **React Leaflet**: A React wrapper for Leaflet.
+- **Tailwind CSS**: For styling.
+- **Redux**: For state management.
+- **Redux Thunk**: For asynchronous actions.
+- **TypeScript**: For static type checking.
+- **Vite**: For fast development and build.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository
+2. Navigate to the project directory
+3. Install dependencies: `npm install`
+4. Create a `.env` file in the root directory and add the necessary environment variables
+5. Start the development server: `npm start`
+
+
+## Contact
+
+For any questions or inquiries, please contact the project maintainers at [seyedalirafazi80@gmail.com].
