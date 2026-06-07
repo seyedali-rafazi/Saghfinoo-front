@@ -1,20 +1,11 @@
 import { useEffect } from "react";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import {
+  defaultMarkerIcon,
+  OSM_ATTRIBUTION,
+  OSM_TILE_URL,
+} from "../../utils/leaflet";
 import MapResize from "../Houses/MapResize";
-
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-const customIcon = L.icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
 
 interface AdLocationPickerProps {
   lat: number;
@@ -55,11 +46,11 @@ const AdLocationPicker: React.FC<AdLocationPickerProps> = ({
       </p>
       <div className="ad-location-map rounded-lg overflow-hidden border border-gray-200">
         <MapContainer center={[lat, lng]} zoom={12} scrollWheelZoom={true}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <TileLayer url={OSM_TILE_URL} attribution={OSM_ATTRIBUTION} />
           <MapResize />
           <MapCenter lat={lat} lng={lng} />
           <ClickHandler onChange={onChange} />
-          <Marker position={[lat, lng]} icon={customIcon} />
+          <Marker position={[lat, lng]} icon={defaultMarkerIcon} />
         </MapContainer>
       </div>
       <p className="text-xs text-gray-400 font-medium">

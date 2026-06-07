@@ -1,25 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { getPropertiesForMap } from "../../services/propertyService";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
+import {
+  defaultMarkerIcon,
+  OSM_ATTRIBUTION,
+  OSM_TILE_URL,
+  TEHRAN_CENTER,
+} from "../../utils/leaflet";
 import { Property } from "../../types/property";
 import MapResize from "./MapResize";
-
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
-
-const customIcon = L.icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
 
 interface SaghfinooMapProps {
   houseGroup?: string;
@@ -53,18 +45,18 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
     return (
       <div className="w-full h-screen">
         <MapContainer
-          center={[35.6892, 51.389]}
+          center={TEHRAN_CENTER}
           zoom={11}
           style={{ height: "100%", width: "100%" }}
         >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <TileLayer url={OSM_TILE_URL} attribution={OSM_ATTRIBUTION} />
           <MapResize />
           <FitBounds properties={properties} />
           {properties.map((property) => (
             <Marker
               key={property._id}
               position={[property.lat, property.lng]}
-              icon={customIcon}
+              icon={defaultMarkerIcon}
               eventHandlers={{
                 click: () => navigate(`/house-details/${property._id}`),
               }}
@@ -77,18 +69,15 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
 
   return (
     <div className="w-1/2 hidden md:block z-0">
-      <MapContainer center={[35.6892, 51.389]} zoom={11}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
+      <MapContainer center={TEHRAN_CENTER} zoom={11}>
+        <TileLayer url={OSM_TILE_URL} attribution={OSM_ATTRIBUTION} />
         <MapResize />
         <FitBounds properties={properties} />
         {properties.map((property) => (
           <Marker
             key={property._id}
             position={[property.lat, property.lng]}
-            icon={customIcon}
+            icon={defaultMarkerIcon}
             eventHandlers={{
               click: () => navigate(`/house-details/${property._id}`),
             }}
