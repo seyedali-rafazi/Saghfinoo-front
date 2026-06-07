@@ -24,6 +24,8 @@ export interface AdQueryStringType {
   discount: number;
   heatingSystem: string;
   city: string;
+  lat: number;
+  lng: number;
 }
 
 interface AdQueryContextType {
@@ -52,6 +54,8 @@ const defaultValue: AdQueryContextType = {
     discount: 0,
     heatingSystem: "",
     city: "",
+    lat: 35.6892,
+    lng: 51.389,
   },
   setAdQueryString: () => {},
 };
@@ -81,6 +85,8 @@ export const AdQueryStringContext: React.FC<
     discount: 0,
     heatingSystem: "",
     city: "",
+    lat: 35.6892,
+    lng: 51.389,
   });
 
   const value = useMemo(

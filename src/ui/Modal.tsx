@@ -24,6 +24,7 @@ const Modal: React.FC<ModalType> = ({
     } else {
       document.body.classList.remove("overflow-hidden");
     }
+    return () => document.body.classList.remove("overflow-hidden");
   }, [open]);
 
   return (

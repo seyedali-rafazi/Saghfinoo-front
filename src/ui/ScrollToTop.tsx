@@ -5,10 +5,11 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    document.body.classList.remove("overflow-hidden");
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  return null; // This makes the component valid as it returns something
+  return null;
 };
 
 export default ScrollToTop;

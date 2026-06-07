@@ -9,13 +9,12 @@ const HomeSearchBox: React.FC = () => {
   const { setQueryString } = useQueryContext();
   const navigate = useNavigate();
 
-  const handelSubmit = () => {
-    setQueryString((prevUser) => ({
-      ...prevUser,
-      city: cityName,
-    }));
-    if (city == "rent") navigate("/rent-house");
-    if (city == "buy") navigate("/buy-house");
+  const handelSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (cityName) {
+      setQueryString((prev) => ({ ...prev, city: cityName }));
+    }
+    navigate(city === "rent" ? "/rent-house" : "/buy-house");
   };
   return (
     <div className="p-3 bg-white border rounded-lg space-y-5 w-1/2 min-w-80 max-w-xl">
@@ -39,7 +38,7 @@ const HomeSearchBox: React.FC = () => {
           خرید
         </button>
       </div>
-      <form className="flex items-center" onSubmit={handelSubmit}>
+      <form className="flex items-center" onSubmit={(e) => handelSubmit(e)}>
         <button type="submit">
           <CiSearch className="w-8 h-8" />
         </button>

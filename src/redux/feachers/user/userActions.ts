@@ -7,7 +7,7 @@ import {
   signupRequest,
   signupSuccess,
 } from "./userSlice";
-import http from "../../../services/https";
+import { getMockUser } from "../../../services/propertyService";
 import toast from "react-hot-toast";
 
 interface UserData {
@@ -35,10 +35,12 @@ export const fetchUser = createAsyncThunk(
   async (_, { dispatch }) => {
     dispatch(fetchUserRequest());
     try {
-      const response = await http.get(`/user/profile`);
-      dispatch(fetchUserSuccess(response.data));
-    } catch (error: any) {
-      dispatch(fetchUserFailure(error.message));
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      dispatch(fetchUserSuccess(getMockUser()));
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "خطا در بارگذاری کاربر";
+      dispatch(fetchUserFailure(message));
     }
   }
 );
@@ -48,13 +50,14 @@ export const signup = createAsyncThunk(
   async ({ userData, onSuccess }: SignupPayload, { dispatch }) => {
     dispatch(signupRequest());
     try {
-      const response = await http.post(`/user/get-otp`, userData);
-      dispatch(signupSuccess(response.data));
-      toast.success(response.data.data.message);
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      dispatch(signupSuccess(getMockUser()));
+      toast.success(`کد تأیید به شماره ${userData.phoneNumber} ارسال شد`);
       onSuccess();
-    } catch (error: any) {
-      dispatch(signupFailure(error.message));
-      toast.success(error.message);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "خطا در ثبت‌نام";
+      dispatch(signupFailure(message));
+      toast.error(message);
     }
   }
 );
@@ -64,16 +67,18 @@ export const completeProfile = createAsyncThunk(
   async ({ userProfileData, onSuccess }: CompletePayload, { dispatch }) => {
     dispatch(signupRequest());
     try {
-      const response = await http.post(
-        `/user/complete-profile`,
-        userProfileData
-      );
-      dispatch(signupSuccess(response.data));
-      toast.success(response.data.data.message);
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      const user = getMockUser();
+      user.data.user.name = userProfileData.name;
+      user.data.user.email = userProfileData.email;
+      dispatch(signupSuccess(user));
+      toast.success("پروفایل با موفقیت تکمیل شد");
       onSuccess();
-    } catch (error: any) {
-      dispatch(signupFailure(error.message));
-      toast.success(error.message);
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "خطا در تکمیل پروفایل";
+      dispatch(signupFailure(message));
+      toast.error(message);
     }
   }
 );

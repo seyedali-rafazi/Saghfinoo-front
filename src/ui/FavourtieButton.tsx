@@ -1,30 +1,22 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store/store";
 import { favouriteHouse } from "../redux/feachers/favourtieProduct/favourtieProductAction";
-import { useEffect } from "react";
-import { fetchUser } from "../redux/feachers/user/userActions";
 
 interface FavHouseIdType {
-  id: any;
-  icon: any;
+  id: string;
+  icon: React.ReactNode;
 }
 
 const FavourtieButton: React.FC<FavHouseIdType> = ({ id, icon }) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
-
-  const onCkickFav = (id: any) => {
-    dispatch(
-      favouriteHouse({
-        id: id,
-      })
-    );
+  const onClickFav = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch(favouriteHouse({ id }));
   };
 
-  return <button onClick={() => onCkickFav(id)}>{icon}</button>;
+  return <button onClick={onClickFav}>{icon}</button>;
 };
 
 export default FavourtieButton;

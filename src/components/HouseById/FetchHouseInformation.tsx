@@ -13,11 +13,7 @@ const FetchHouseInformation: React.FC<FetchHouseInformationType> = ({
 }) => {
   return (
     <div className="w-full md:w-1/2 space-y-14">
-      <FetchHousrHeader
-        city={fetchHouse?.city}
-        title={fetchHouse?.title}
-        titleGroup={fetchHouse?.houseGroup?.title}
-      />
+      <FetchHousrHeader property={fetchHouse} />
       <HouseFeachers floor={fetchHouse?.floor} rooms={fetchHouse?.rooms} />
       <FechHousePrice city={fetchHouse?.city} price={fetchHouse?.price} />
       <HouseCompleteFechers

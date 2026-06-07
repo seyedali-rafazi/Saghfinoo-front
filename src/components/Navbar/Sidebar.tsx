@@ -13,18 +13,30 @@ import EnterUser from "./EnterUser";
 const SidebarOptions = [
   {
     id: 1,
+<<<<<<< HEAD
+    text: "ثبت آگهی",
+    icon: <Key />,
+    path: "/ad-region",
+=======
+    text: "صفحه اصلی",
+    icon: <Home />,
+    path: "/",
+>>>>>>> b0a58ad (initial refactor project)
+  },
+  {
+    id: 2,
     text: "ثبت آگهی",
     icon: <Key />,
     path: "/ad-region",
   },
   {
-    id: 2,
+    id: 3,
     text: "اجاره خانه",
     icon: <Plus />,
     path: "/rent-house",
   },
   {
-    id: 3,
+    id: 4,
     text: "خرید خانه",
     icon: <Home />,
     path: "/buy-house",
@@ -47,55 +59,51 @@ const Sidebar: React.FC<SidebarType> = ({ open, onClose }) => {
       document.body.classList.remove("overflow-hidden");
       sidebarRef.current?.classList.add("translate-x-full");
     }
+    return () => document.body.classList.remove("overflow-hidden");
   }, [open]);
 
+  if (!open) return null;
+
   return (
-    <div
-      className={`${
-        open ? "fixed top-0 left-0 right-0 bottom-0 w-full h-screen " : ""
-      }`}
-    >
+    <div className="fixed inset-0 z-[100000000] lg:hidden">
       <div
-        className={`fixed  top-0 right-0 w-full  h-screen bg-white bg-opacity-30 modal lg:hidden transition-transform duration-700  ${
-          open ? "" : "translate-x-full"
-        }`}
+        className="absolute inset-0 bg-black/30"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      <div
         ref={sidebarRef}
+        className="fixed top-0 right-0 w-4/5 max-w-sm h-screen bg-white shadow-xl transition-transform duration-300 z-[100000001]"
       >
-        <div className="top-0 right-0 bg-white w-full h-screen">
-          <div>
-            <div className="flex justify-end w-full relative p-6">
-              <button onClick={onClose}>
-                <Cross />
-              </button>
-            </div>
-            <div className="flex gap-3 items-center py-8 px-3 bg-gray-100">
-              <EnterUser>
-                <div className="flex gap-2 items-center justify-center text-sm font-medium">
-                  <UserAuth />
-                  <p>ورود / ثبت نام</p>
-                </div>
-              </EnterUser>
-            </div>
-            <div>
-              {SidebarOptions.map((SidebarOption) => (
-                <Link
-                  className="flex justify-between items-center py-3 px-3 text-sm font-medium"
-                  key={SidebarOption.id}
-                  to={SidebarOption.path}
-                  onClick={onClose}
-                >
-                  <div className="flex items-center gap-2">
-                    {SidebarOption.icon}
-                    <p>{SidebarOption.text}</p>
-                  </div>
-                  <div>
-                    <LeftArrow />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="flex justify-end w-full p-6">
+          <button type="button" onClick={onClose} aria-label="بستن منو">
+            <Cross />
+          </button>
         </div>
+        <div className="flex gap-3 items-center py-6 px-4 bg-gray-100">
+          <EnterUser>
+            <div className="flex gap-2 items-center justify-center text-sm font-medium">
+              <UserAuth />
+              <p>ورود / ثبت نام</p>
+            </div>
+          </EnterUser>
+        </div>
+        <nav>
+          {SidebarOptions.map((option) => (
+            <Link
+              className="flex justify-between items-center py-4 px-4 text-sm font-medium border-b border-gray-100 hover:bg-gray-50"
+              key={option.id}
+              to={option.path}
+              onClick={onClose}
+            >
+              <div className="flex items-center gap-3">
+                {option.icon}
+                <p>{option.text}</p>
+              </div>
+              <LeftArrow />
+            </Link>
+          ))}
+        </nav>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 interface AdButtonBackType {
   path: string;
+  label?: string;
 }
 
 export const AdButtonContinue: React.FC = () => {
@@ -15,25 +16,34 @@ export const AdButtonContinue: React.FC = () => {
   );
 };
 
-export const AdButtonSubmit: React.FC = () => {
+interface AdButtonSubmitType {
+  disabled?: boolean;
+}
+
+export const AdButtonSubmit: React.FC<AdButtonSubmitType> = ({ disabled }) => {
   return (
     <button
       type="submit"
-      className="col-start-1 mx-auto  font-bold text-secondery-50 bg-primary text-white py-2 rounded-md  px-5 w-1/2"
+      disabled={disabled}
+      className="col-start-1 mx-auto font-bold text-secondery-50 bg-primary text-white py-2 rounded-md px-5 w-1/2 disabled:opacity-50"
     >
-      ثبت نهایی
+      {disabled ? "در حال ثبت..." : "ثبت نهایی"}
     </button>
   );
 };
 
-export const AdButtonBack: React.FC<AdButtonBackType> = ({ path }) => {
+export const AdButtonBack: React.FC<AdButtonBackType> = ({
+  path,
+  label,
+}) => {
   const navigate = useNavigate();
   return (
     <button
+      type="button"
       onClick={() => navigate(path)}
-      className="col-start-1 mx-auto  font-bold text-secondery-50 bg-white text-primary border border-primary  py-2 rounded-md  px-5 w-1/2"
+      className="col-start-1 mx-auto font-bold text-secondery-50 bg-white text-primary border border-primary py-2 rounded-md px-5 w-1/2"
     >
-      قبلی
+      {label ?? (path === "/" ? "صفحه اصلی" : "قبلی")}
     </button>
   );
 };

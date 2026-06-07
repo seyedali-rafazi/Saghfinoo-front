@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useAdQueryContext } from "../../context/AdQueryContext";
 import TextField from "../../ui/TextField";
-import {
-  AdButtonBack,
-  AdButtonSubmit,
-} from "../../ui/AdButton";
+import { AdButtonBack, AdButtonSubmit } from "../../ui/AdButton";
 import SelectField from "../../ui/SelectField";
 import {
   collingSystem,
@@ -15,7 +12,8 @@ import {
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store/store";
 import { addProduct } from "../../redux/feachers/addProduct/addProductActions";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AdThirdContent: React.FC = () => {
   const {
@@ -23,13 +21,15 @@ const AdThirdContent: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const { adQueryString, setAdQueryString } = useAdQueryContext();
+  const { adQueryString } = useAdQueryContext();
   const dispatch = useDispatch<AppDispatch>();
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState(false);
 
-  const onCkickSubmit = (data: any) => {
-    setAdQueryString((prevUser) => ({
-      ...prevUser,
+  const onClickSubmit = async (data: any) => {
+    setSubmitting(true);
+    const fullData = {
+      ...adQueryString,
       parking: Number(data.parking),
       WC: Number(data.WC),
       WCType: data.WCType,
@@ -38,24 +38,26 @@ const AdThirdContent: React.FC = () => {
       collingSystem: data.collingSystem,
       floorMaterial: data.floorMaterial,
       heatingSystem: data.heatingSystem,
-      imageLink: "https://s30.picofile.com/file/8476525826/8_min.jpg",
-      slug: "villa-b44c81e5-3d02-4e35-857f-982a3de625sfdfsdj",
-      city: "تهران",
-    }));
-    setFormSubmitted(true);
-  };
-  useEffect(() => {
-    if (formSubmitted) {
-      dispatch(addProduct(adQueryString));
+      imageLink:
+        adQueryString.imageLink ||
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop",
+      slug: `property-${Date.now()}`,
+    };
+
+    try {
+      await dispatch(addProduct(fullData)).unwrap();
+      navigate("/");
+    } catch {
+      setSubmitting(false);
     }
-  }, [formSubmitted]);
+  };
 
   return (
     <form
       className="flex flex-col gap-10 items-center justify-center w-full h-full"
-      onSubmit={handleSubmit(onCkickSubmit)}
+      onSubmit={handleSubmit(onClickSubmit)}
     >
-      <div className="flex flex-col justify-center items-center lg:grid lg:grid-cols-2 gap-8 p-3 w-full ">
+      <div className="flex flex-col justify-center items-center lg:grid lg:grid-cols-2 gap-8 p-3 w-full">
         <TextField
           className="border border-secondery-400 p-2 rounded-sm w-full h-[44px]"
           placeholder="پارکینگ"
@@ -63,9 +65,7 @@ const AdThirdContent: React.FC = () => {
           name="parking"
           type="number"
           register={register}
-          validationSchema={{
-            required: "پارکینگ الزامی است",
-          }}
+          validationSchema={{ required: "پارکینگ الزامی است" }}
         />
         <TextField
           className="border border-secondery-400 p-2 rounded-sm w-full h-[44px]"
@@ -74,9 +74,7 @@ const AdThirdContent: React.FC = () => {
           name="WC"
           type="number"
           register={register}
-          validationSchema={{
-            required: "سرویس بهداشتی الزامی است",
-          }}
+          validationSchema={{ required: "سرویس بهداشتی الزامی است" }}
         />
         <SelectField
           name="WCType"
@@ -92,9 +90,7 @@ const AdThirdContent: React.FC = () => {
           name="warHouse"
           type="number"
           register={register}
-          validationSchema={{
-            required: " انباری الزامی است",
-          }}
+          validationSchema={{ required: " انباری الزامی است" }}
         />
         <TextField
           className="border border-secondery-400 p-2 rounded-sm w-full h-[44px]"
@@ -103,9 +99,7 @@ const AdThirdContent: React.FC = () => {
           name="elevator"
           type="number"
           register={register}
-          validationSchema={{
-            required: " آسانسور الزامی است",
-          }}
+          validationSchema={{ required: " آسانسور الزامی است" }}
         />
         <SelectField
           name="collingSystem"
@@ -119,7 +113,7 @@ const AdThirdContent: React.FC = () => {
           errors={errors}
           register={register}
           options={floorMaterial}
-          required="جنس کف الزلمی است "
+          required="جنس کف الزامی است"
         />
         <SelectField
           name="heatingSystem"
@@ -131,7 +125,7 @@ const AdThirdContent: React.FC = () => {
       </div>
       <div className="flex gap-3 w-full max-w-md">
         <AdButtonBack path="/ad-price" />
-        <AdButtonSubmit />
+        <AdButtonSubmit disabled={submitting} />
       </div>
     </form>
   );

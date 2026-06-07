@@ -24,7 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/rent-house" element={<RentHouse />} />
             <Route path="/buy-house" element={<BuyHouse />} />
-            <Route path="/map" element={<Map />} />
+            <Route path="/map" element={<Map standalone />} />
             <Route path="/house-details/:id" element={<HouseDetali />} />
             <Route path="/ad-region" element={<AdvertisingRegion />} />
             <Route path="/ad-price" element={<AdvertisingPrice />} />

@@ -4,21 +4,27 @@ import {
   houseByIdRequest,
   houseByIdSuccess,
 } from "./productByIdSlice";
-import http from "../../../services/https";
+import { getPropertyById } from "../../../services/propertyService";
 
 interface ParamsType {
   id: string;
 }
 
 export const fetchHouseById = createAsyncThunk(
-  "user/fetchUser",
+  "house/fetchHouseById",
   async ({ id }: ParamsType, { dispatch }) => {
     dispatch(houseByIdRequest());
     try {
-      const response = await http.get(`/product/${id}`);
-      dispatch(houseByIdSuccess(response.data));
-    } catch (error: any) {
-      dispatch(houseByIdFailure(error.message));
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const product = getPropertyById(id);
+      if (!product) {
+        throw new Error("ملک مورد نظر یافت نشد");
+      }
+      dispatch(houseByIdSuccess({ data: { product } }));
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "خطا در بارگذاری ملک";
+      dispatch(houseByIdFailure(message));
     }
   }
 );

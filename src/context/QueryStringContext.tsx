@@ -1,24 +1,17 @@
 import { createContext, useContext, useMemo, useState } from "react";
+import { QueryFilters } from "../types/property";
 
 type QueryStringContextProviderProps = {
   children: React.ReactNode;
 };
 
-interface QueryStringType {
-  rooms?: string;
-}
-
-// Define a type for the context value
 interface QueryContextType {
-  queryString: QueryStringType;
-  setQueryString: React.Dispatch<React.SetStateAction<QueryStringType>>;
+  queryString: QueryFilters;
+  setQueryString: React.Dispatch<React.SetStateAction<QueryFilters>>;
 }
 
-// Provide a default value for the context
 const defaultValue: QueryContextType = {
-  queryString: {
-    rooms: "",
-  },
+  queryString: {},
   setQueryString: () => {},
 };
 
@@ -27,9 +20,7 @@ const QueryContext = createContext<QueryContextType>(defaultValue);
 export const QueryStringContext: React.FC<QueryStringContextProviderProps> = ({
   children,
 }) => {
-  const [queryString, setQueryString] = useState<QueryStringType>({
-    rooms: "",
-  });
+  const [queryString, setQueryString] = useState<QueryFilters>({});
 
   const value = useMemo(
     () => ({ queryString, setQueryString }),

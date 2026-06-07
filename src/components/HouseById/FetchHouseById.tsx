@@ -7,11 +7,12 @@ import Loading from "../../ui/Loader";
 import FetchHouseInformation from "./FetchHouseInformation";
 import HousePhoto from "./HousePhoto";
 import FetchHouseSwiper from "./FetchHouseSwiper";
+import HouseLocationMap from "./HouseLocationMap";
 
 const FetchHouseById: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const { loading, houseById } = useSelector(
+  const { loading, houseById, error } = useSelector(
     (state: RootState) => state.houseById
   );
   const { id } = useParams<{ id: string }>();
@@ -26,7 +27,15 @@ const FetchHouseById: React.FC = () => {
     return <Loading />;
   }
 
-  let fetchHouse = houseById?.data?.product;
+  if (error || !houseById?.data?.product) {
+    return (
+      <p className="text-center font-bold text-gray-500 py-20">
+        ملک مورد نظر یافت نشد
+      </p>
+    );
+  }
+
+  const fetchHouse = houseById.data.product;
 
   return (
     <div className="space-y-14">
@@ -34,6 +43,7 @@ const FetchHouseById: React.FC = () => {
         <FetchHouseInformation fetchHouse={fetchHouse} />
         <HousePhoto fetchHouse={fetchHouse} />
       </div>
+      <HouseLocationMap property={fetchHouse} />
       <FetchHouseSwiper />
     </div>
   );

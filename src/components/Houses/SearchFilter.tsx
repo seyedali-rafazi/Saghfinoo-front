@@ -23,19 +23,7 @@ const SearchFilter: React.FC<SearchFilterType> = ({ onClose, setActive }) => {
       activeHeatingSystem: 1,
       activeFloorMaterial: 1,
     }));
-    setQueryString((prevUser) => ({
-      ...prevUser,
-      activeRoom: 1,
-      activeWarhouse: 1,
-      activeParking: 1,
-      activeBathroom: 1,
-      activeBathroomType: 1,
-      activeFilterElevator: 1,
-      activeFloor: 1,
-      activeCollingSystem: 1,
-      activeHeatingSystem: 1,
-      activeFloorMaterial: 1,
-    }));
+    setQueryString({});
   };
   
   return (

@@ -5,23 +5,23 @@ import {
   addPriductSuccess,
 } from "./addProductSlice";
 import toast from "react-hot-toast";
-import http from "../../../services/https";
 import { AdQueryStringType } from "../../../context/AdQueryContext";
-
+import { addProperty } from "../../../services/propertyService";
 
 export const addProduct = createAsyncThunk(
   "user/addproduct",
   async (userData: AdQueryStringType, { dispatch }) => {
     dispatch(addPriductRequest());
     try {
-      console.log(userData);
-
-      const response = await http.post(`/admin/product/add`, userData);
-      dispatch(addPriductSuccess(response.data));
-      toast.success(response.data.data.message);
-    } catch (error: any) {
-      dispatch(addPriductFailure(error.message));
-      toast.success(error.message);
+      const newProperty = addProperty(userData);
+      dispatch(addPriductSuccess({ data: { product: newProperty } }));
+      toast.success("آگهی شما با موفقیت ثبت شد");
+      return newProperty;
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "خطا در ثبت آگهی";
+      dispatch(addPriductFailure(message));
+      toast.error(message);
     }
   }
 );

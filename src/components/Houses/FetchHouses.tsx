@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Skeleton from "../../ui/Skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store/store";
@@ -30,27 +30,27 @@ const FetchHouses: React.FC<FetchHousesType> = ({ city }) => {
   };
 
   useEffect(() => {
-    dispatch(resetHouseState()); // Reset state to clear previous data
+    dispatch(resetHouseState());
     dispatch(fetchHouses(params));
   }, [dispatch, city, sort, queryString]);
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      loading
-    ) {
+  const handleScroll = useCallback(() => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight < scrollHeight - 100 || loading) {
       return;
     }
     if (items.length < limit) {
       dispatch(fetchHouses(params));
     }
-  };
+  }, [loading, items.length, limit, dispatch, city, sort, queryString]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, items.length, limit]);
+  }, [handleScroll]);
 
   return (
     <div className="space-y-5 w-full md:w-1/2">

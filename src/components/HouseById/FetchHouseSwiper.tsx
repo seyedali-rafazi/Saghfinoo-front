@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../../redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchHouses } from "../../redux/feachers/products/houseActions";
+import { Property } from "../../types/property";
 import { SaveFavourite, SaveFavouriteMini } from "../../icons/FetchHouseIcon";
 import { toPersianNumbersWithComma } from "../../utils/FrormatNumber";
 import { Link } from "react-router-dom";
@@ -20,15 +21,12 @@ const FetchHouseSwiper: React.FC = () => {
   };
 
   useEffect(() => {
-    
     dispatch(fetchHouses(params));
   }, [dispatch]);
 
-  console.log(items);
-
   return !loading ? (
     <SaghfinooSwiper xl={3} sm={2} slidesPerView={2}>
-      {items.map((item) => (
+      {items.map((item: Property) => (
         <SwiperSlide key={item._id} className="flex justify-center">
           <Link
             to={`/house-details/${item._id}`}

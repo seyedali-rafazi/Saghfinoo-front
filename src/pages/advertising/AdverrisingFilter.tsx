@@ -1,7 +1,9 @@
 import AdFhird from "../../components/AdThird/AdFhird";
+import AdPageLayout from "../../components/advertising/AdPageLayout";
 
 const AdverrisingFilter: React.FC = () => {
   return (
+<<<<<<< HEAD
     <div className="flex justify-center items-center w-full h-full min-h-screen bg-slate-200 md:px-24 md:py-24">
       <div className="bg-cover bg-ad-background bg-center md:bg-none w-full md:h-full bg-white rounded-2xl flex justify-center items-center h-screen">
         <div className="w-1/3 hidden md:block">
@@ -20,6 +22,11 @@ const AdverrisingFilter: React.FC = () => {
         </div>
       </div>
     </div>
+=======
+    <AdPageLayout>
+      <AdFhird />
+    </AdPageLayout>
+>>>>>>> b0a58ad (initial refactor project)
   );
 };
 
