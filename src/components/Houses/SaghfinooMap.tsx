@@ -1,21 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
-<<<<<<< HEAD
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import L from "leaflet";
-import { markers } from "../../data/MapMarker";
-
-// Define your custom icon
-const customIcon = new L.Icon({
-  iconUrl: "/photos/location-tick.svg",
-  iconSize: [32, 32], // size of the icon
-  iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
-  popupAnchor: [0, -32], // point from which the popup should open relative to the iconAnchor
-});
-
-const SaghfinooMap: React.FC = () => {
-=======
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { getPropertiesForMap } from "../../services/propertyService";
@@ -67,7 +52,11 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
   if (standalone) {
     return (
       <div className="w-full h-screen">
-        <MapContainer center={[35.6892, 51.389]} zoom={11} style={{ height: "100%", width: "100%" }}>
+        <MapContainer
+          center={[35.6892, 51.389]}
+          zoom={11}
+          style={{ height: "100%", width: "100%" }}
+        >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <MapResize />
           <FitBounds properties={properties} />
@@ -86,7 +75,6 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
     );
   }
 
->>>>>>> b0a58ad (initial refactor project)
   return (
     <div className="w-1/2 hidden md:block z-0">
       <MapContainer center={[35.6892, 51.389]} zoom={11}>
@@ -98,12 +86,6 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
         <FitBounds properties={properties} />
         {properties.map((property) => (
           <Marker
-<<<<<<< HEAD
-            position={marker.geocode as [number, number]}
-            key={marker.id}
-            icon={customIcon}
-          ></Marker>
-=======
             key={property._id}
             position={[property.lat, property.lng]}
             icon={customIcon}
@@ -132,7 +114,6 @@ const SaghfinooMap: React.FC<SaghfinooMapProps> = ({
               </div>
             </Popup>
           </Marker>
->>>>>>> b0a58ad (initial refactor project)
         ))}
       </MapContainer>
     </div>

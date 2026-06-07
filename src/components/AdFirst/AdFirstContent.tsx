@@ -72,13 +72,7 @@ const AdFirstContent: React.FC = () => {
           name="offPrice"
           type="number"
           register={register}
-<<<<<<< HEAD
-          validationSchema={{
-            required: "مبلغ ضروری است",
-          }}
-=======
           validationSchema={{ required: "مبلغ الزامی است" }}
->>>>>>> b0a58ad (initial refactor project)
         />
         <TextField
           className="border border-secondery-400 p-2 rounded-sm w-full h-[44px] lg:col-span-2"

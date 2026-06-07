@@ -13,15 +13,9 @@ import EnterUser from "./EnterUser";
 const SidebarOptions = [
   {
     id: 1,
-<<<<<<< HEAD
-    text: "ثبت آگهی",
-    icon: <Key />,
-    path: "/ad-region",
-=======
     text: "صفحه اصلی",
     icon: <Home />,
     path: "/",
->>>>>>> b0a58ad (initial refactor project)
   },
   {
     id: 2,
